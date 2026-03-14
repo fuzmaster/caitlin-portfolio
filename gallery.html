@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Caitlin Britten</title>
+  <meta name="description" content="Portfolio of digital marketing and administrative operations work by Caitlin Britten, created for Elements Massage Beverly MA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" data-page-transition>Caitlin Britten</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav id="primary-navigation" class="site-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html" data-page-transition>Home</a></li>
+          <li><a href="gallery.html" class="active" aria-current="page" data-page-transition>Portfolio</a></li>
+          <li><a href="about.html" data-page-transition>About</a></li>
+          <li><a href="contact.html" data-page-transition>Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container">
+
+    <!-- Shorter intro, no How to Review panel -->
+    <section class="page-intro" aria-labelledby="portfolio-heading">
+      <p class="eyebrow">Work Samples</p>
+      <h1 id="portfolio-heading">Portfolio</h1>
+      <p>Real work produced for Elements Massage in Beverly, MA. Promotional graphics, booking communications, client education, and video reels. All made in Canva and sent via Instagram, Facebook, and Constant Contact.</p>
+    </section>
+
+    <section aria-labelledby="gallery-sections-heading" class="portfolio-section-wrap">
+      <h2 id="gallery-sections-heading" class="visually-hidden">Portfolio Gallery Sections</h2>
+      <div id="gallery-sections"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Caitlin Britten. All rights reserved.</p>
+    <p>Peabody, MA &mdash; Available for remote work nationwide.</p>
+  </footer>
+
+  <script src="js/gallery-data.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
