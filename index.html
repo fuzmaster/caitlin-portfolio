@@ -55,6 +55,21 @@
       </div>
 
       <div class="slideshow" aria-label="Featured portfolio samples" aria-live="polite">
+
+        <!-- Prev / Next arrows injected by JS, but we put the markup here
+             so they degrade gracefully if JS is slow -->
+        <button class="slideshow-arrow slideshow-arrow--prev" type="button" aria-label="Previous slide">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <button class="slideshow-arrow slideshow-arrow--next" type="button" aria-label="Next slide">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
         <figure class="slide active">
           <img src="assets/promo-member-savings-event.png" alt="Member Only Savings Event graphic" fetchpriority="high" />
           <figcaption>
@@ -83,6 +98,10 @@
             Dads &amp; Grads Gift Card Promo
           </figcaption>
         </figure>
+
+        <!-- Dot indicators — JS populates and updates these -->
+        <div class="slideshow-dots" role="tablist" aria-label="Slide indicators"></div>
+
       </div>
     </section>
 

@@ -1,15 +1,5 @@
 /**
  * gallery-data.js
- * All real portfolio assets mapped to categories with titles,
- * descriptions, tools used, and business impact context.
- *
- * Categories:
- *   Promotional & Sales
- *   Holiday & Seasonal
- *   Booking & Availability
- *   Client Education
- *   Community & Social Proof
- *   Video Reels
  */
 
 var galleryData = [
@@ -361,8 +351,17 @@ var galleryData = [
   },
   {
     id: 'video-well-be-back',
-    filename: "assets/videos/We'll be here when you get back.mp4",
-    title: 'We\'ll Be Here Reel',
+    /*
+     * FILE RENAMED on disk: apostrophe removed from original filename.
+     * Old name: "We'll be here when you get back.mp4"
+     * New name: "Well be here when you get back.mp4"
+     *
+     * Apostrophes in filenames cause unreliable behavior in browsers when
+     * served from file:// paths. Rename the file in your assets/videos/
+     * folder to match this string exactly.
+     */
+    filename: 'assets/videos/Well be here when you get back.mp4',
+    title: "We'll Be Here Reel",
     type: 'video',
     category: 'Video Reels',
     toolsUsed: ['Canva'],
@@ -391,7 +390,7 @@ var galleryData = [
   },
   {
     id: 'video-mothers-day-gift-card',
-    filename: "assets/videos/Gift Card Sale.mp4",
+    filename: 'assets/videos/Gift Card Sale.mp4',
     title: "Mother's Day Gift Card Reel",
     type: 'video',
     category: 'Video Reels',

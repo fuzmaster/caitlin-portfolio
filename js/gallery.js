@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'assets/videos/Happy.mp4': 'assets/videos/Happy.mp4_snapshot_00.00.321.jpg',
     'assets/videos/Middleton Holiday.mp4': 'assets/videos/Middleton Holiday.mp4_snapshot_00.00.369.jpg',
     'assets/videos/Recharge.mp4': 'assets/videos/Recharge.mp4_snapshot_00.00.179.jpg',
-    "assets/videos/We'll be here when you get back.mp4": "assets/videos/We'll be here when you get back.mp4_snapshot_00.00.268.jpg"
+    'assets/videos/Well be here when you get back.mp4': 'assets/videos/Well be here when you get back.mp4_snapshot_00.00.268.jpg'
   };
 
   /*

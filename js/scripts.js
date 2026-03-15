@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = () => reducedMotionQuery.matches;
   const PAGE_TRANSITION_MS = 300;
 
+  /* ── Page transitions ─────────────────────────────────────────────────── */
   const setupPageTransitions = () => {
     if (prefersReducedMotion()) {
       return;
@@ -58,7 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const isSameOrigin = destination.origin === window.location.origin;
       const pageName = destination.pathname.split('/').pop() || '';
       const isHtmlPage = destination.pathname.endsWith('.html') || !pageName.includes('.');
-      const isSamePage = destination.pathname === window.location.pathname && destination.hash === window.location.hash;
+      const isSamePage =
+        destination.pathname === window.location.pathname &&
+        destination.hash === window.location.hash;
 
       if (!isSameOrigin || !isHtmlPage || isSamePage) {
         return;
@@ -74,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  /* ── Mobile nav ───────────────────────────────────────────────────────── */
   const setupMobileNav = () => {
     const navToggle = document.querySelector('.nav-toggle');
     if (!(navToggle instanceof HTMLButtonElement)) {
@@ -96,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'input:not([disabled])',
       'select:not([disabled])',
       'textarea:not([disabled])',
-      '[tabindex]:not([tabindex="-1"])'
+      '[tabindex]:not([tabindex="-1"])',
     ].join(',');
 
     const closeNav = () => {
@@ -119,8 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeNav();
 
     navToggle.addEventListener('click', () => {
-      const isOpen = body.classList.contains('nav-open');
-      if (isOpen) {
+      if (body.classList.contains('nav-open')) {
         closeNav();
       } else {
         openNav();
@@ -132,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!(target instanceof Element)) {
         return;
       }
-
       if (target.closest('a')) {
         closeNav();
       }
@@ -142,13 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!body.classList.contains('nav-open')) {
         return;
       }
-
       const target = event.target;
       if (!(target instanceof Node)) {
         return;
       }
-
-      const clickedInsideHeader = target instanceof Element && target.closest('.site-header');
+      const clickedInsideHeader =
+        target instanceof Element && target.closest('.site-header');
       if (!clickedInsideHeader) {
         closeNav();
       }
@@ -156,8 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Tab' && body.classList.contains('nav-open')) {
-        const focusableElements = Array.from(nav.querySelectorAll(focusableSelector))
-          .filter((element) => element instanceof HTMLElement);
+        const focusableElements = Array.from(nav.querySelectorAll(focusableSelector)).filter(
+          (element) => element instanceof HTMLElement
+        );
 
         if (focusableElements.length > 0) {
           const first = focusableElements[0];
@@ -190,40 +192,115 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  /* ── Home slideshow ───────────────────────────────────────────────────── */
   const setupHomeSlideshow = () => {
     const slideElements = Array.from(document.querySelectorAll('.slideshow .slide'));
     if (slideElements.length === 0) {
       return;
     }
 
-    const slideshowRoot = document.querySelector('.slideshow');
+    const slideshowRoot  = document.querySelector('.slideshow');
     const slideshowToggle = document.querySelector('.slideshow-toggle');
+    const prevBtn        = document.querySelector('.slideshow-arrow--prev');
+    const nextBtn        = document.querySelector('.slideshow-arrow--next');
+    const dotsContainer  = document.querySelector('.slideshow-dots');
+
     const hasControl = slideshowToggle instanceof HTMLButtonElement;
     let isPaused = prefersReducedMotion();
     let isInteractionPaused = false;
 
-    let current = slideElements.findIndex((slide) => slide.classList.contains('active'));
+    /* ── Dots ── */
+    const dots = [];
+    if (dotsContainer instanceof HTMLElement) {
+      slideElements.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'slideshow-dot';
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        dot.dataset.index = String(i);
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+      });
+    }
+
+    /* ── Track current slide ── */
+    let current = slideElements.findIndex((s) => s.classList.contains('active'));
     if (current < 0) {
       current = 0;
       slideElements[current].classList.add('active');
     }
 
-    const advanceSlide = () => {
-      slideElements[current].classList.remove('active');
-      current = (current + 1) % slideElements.length;
-      slideElements[current].classList.add('active');
+    const syncDots = () => {
+      dots.forEach((dot, i) => {
+        const active = i === current;
+        dot.classList.toggle('active', active);
+        dot.setAttribute('aria-selected', String(active));
+      });
     };
 
+    syncDots();
+
+    /* ── Go to slide ── */
+    const goTo = (index) => {
+      slideElements[current].classList.remove('active');
+      current = (index + slideElements.length) % slideElements.length;
+      slideElements[current].classList.add('active');
+      syncDots();
+    };
+
+    const advanceSlide = () => goTo(current + 1);
+
+    /* ── Arrow buttons ── */
+    if (prevBtn instanceof HTMLButtonElement) {
+      prevBtn.addEventListener('click', () => {
+        goTo(current - 1);
+        isPaused = true;
+        if (hasControl) {
+          slideshowToggle.textContent = 'Resume';
+          slideshowToggle.setAttribute('aria-pressed', 'true');
+          slideshowToggle.setAttribute('aria-label', 'Resume featured work slideshow');
+        }
+      });
+    }
+
+    if (nextBtn instanceof HTMLButtonElement) {
+      nextBtn.addEventListener('click', () => {
+        goTo(current + 1);
+        isPaused = true;
+        if (hasControl) {
+          slideshowToggle.textContent = 'Resume';
+          slideshowToggle.setAttribute('aria-pressed', 'true');
+          slideshowToggle.setAttribute('aria-label', 'Resume featured work slideshow');
+        }
+      });
+    }
+
+    /* ── Dot clicks ── */
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        goTo(i);
+        isPaused = true;
+        if (hasControl) {
+          slideshowToggle.textContent = 'Resume';
+          slideshowToggle.setAttribute('aria-pressed', 'true');
+          slideshowToggle.setAttribute('aria-label', 'Resume featured work slideshow');
+        }
+      });
+    });
+
+    /* ── Pause / resume toggle ── */
     if (hasControl) {
       if (isPaused) {
-        slideshowToggle.textContent = 'Resume rotation';
+        slideshowToggle.textContent = 'Resume';
         slideshowToggle.setAttribute('aria-pressed', 'true');
         slideshowToggle.setAttribute('aria-label', 'Resume featured work slideshow');
       }
 
       slideshowToggle.addEventListener('click', () => {
         isPaused = !isPaused;
-        slideshowToggle.textContent = isPaused ? 'Resume rotation' : 'Pause rotation';
+        slideshowToggle.textContent = isPaused ? 'Resume' : 'Pause';
         slideshowToggle.setAttribute('aria-pressed', String(isPaused));
         slideshowToggle.setAttribute(
           'aria-label',
@@ -234,31 +311,35 @@ document.addEventListener('DOMContentLoaded', () => {
       reducedMotionQuery.addEventListener('change', (event) => {
         if (event.matches) {
           isPaused = true;
-          slideshowToggle.textContent = 'Resume rotation';
+          slideshowToggle.textContent = 'Resume';
           slideshowToggle.setAttribute('aria-pressed', 'true');
           slideshowToggle.setAttribute('aria-label', 'Resume featured work slideshow');
         }
       });
     }
 
+    /* ── Pause on hover / focus ── */
     if (slideshowRoot instanceof HTMLElement) {
-      slideshowRoot.addEventListener('mouseenter', () => {
-        isInteractionPaused = true;
-      });
+      slideshowRoot.addEventListener('mouseenter', () => { isInteractionPaused = true; });
+      slideshowRoot.addEventListener('mouseleave', () => { isInteractionPaused = false; });
+      slideshowRoot.addEventListener('focusin',    () => { isInteractionPaused = true; });
+      slideshowRoot.addEventListener('focusout',   () => { isInteractionPaused = false; });
+    }
 
-      slideshowRoot.addEventListener('mouseleave', () => {
-        isInteractionPaused = false;
-      });
-
-      slideshowRoot.addEventListener('focusin', () => {
-        isInteractionPaused = true;
-      });
-
-      slideshowRoot.addEventListener('focusout', () => {
-        isInteractionPaused = false;
+    /* ── Keyboard left/right when slideshow is focused ── */
+    if (slideshowRoot instanceof HTMLElement) {
+      slideshowRoot.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          goTo(current - 1);
+        } else if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          goTo(current + 1);
+        }
       });
     }
 
+    /* ── Auto-rotation timer ── */
     if (slideElements.length > 1) {
       const rotationTimer = window.setInterval(() => {
         if (!document.hidden && !isPaused && !isInteractionPaused) {
@@ -272,6 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  /* ── Reveal obfuscated contact links ─────────────────────────────────── */
   const revealObfuscatedContactLinks = () => {
     document.querySelectorAll('.reveal-contact').forEach((span) => {
       const type = span.dataset.type;
