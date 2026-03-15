@@ -83,7 +83,7 @@ img, video { display: block; max-width: 100%; }
 a { color: inherit; }
 ul { list-style: none; }
 
-h1, h2, h3, .logo {
+h1, h2, h3 {
   font-family: "Playfair Display", Georgia, serif;
   letter-spacing: 0.02em;
   line-height: 1.18;
@@ -169,11 +169,13 @@ p { max-width: var(--reading-max); }
 /* ─── 4. COMPONENTS ─────────────────────────────────────────────────────── */
 
 .logo {
+  font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
   font-size: 1.45rem;
   font-weight: 600;
   text-decoration: none;
   color: var(--color-salmon-light);
   white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
 .site-nav ul {

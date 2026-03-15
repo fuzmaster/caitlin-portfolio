@@ -14,6 +14,20 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" data-page-transition>Caitlin Britten</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav id="primary-navigation" class="site-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html" class="active" aria-current="page" data-page-transition>Home</a></li>
           <li><a href="gallery.html" data-page-transition>Portfolio</a></li>
           <li><a href="about.html" data-page-transition>About</a></li>
           <li><a href="contact.html" data-page-transition>Contact</a></li>
@@ -44,15 +58,11 @@
       </div>
 
       <div class="slideshow" aria-label="Featured portfolio samples" aria-live="polite">
-
-        <!-- Prev / Next arrows injected by JS, but we put the markup here
-             so they degrade gracefully if JS is slow -->
         <button class="slideshow-arrow slideshow-arrow--prev" type="button" aria-label="Previous slide">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
         </button>
-
         <button class="slideshow-arrow slideshow-arrow--next" type="button" aria-label="Next slide">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polyline points="9 18 15 12 9 6"></polyline>
@@ -61,36 +71,22 @@
 
         <figure class="slide active">
           <img src="assets/promo-member-savings-event.png" alt="Member Only Savings Event graphic" fetchpriority="high" />
-          <figcaption>
-            <span class="slide-tag">Promotional</span>
-            Member Only Savings Event
-          </figcaption>
+          <figcaption><span class="slide-tag">Promotional</span> Member Only Savings Event</figcaption>
         </figure>
         <figure class="slide">
           <img src="assets/booking-availability-promo.png" alt="Booking availability post" loading="lazy" />
-          <figcaption>
-            <span class="slide-tag">Booking</span>
-            Therapist Availability Post
-          </figcaption>
+          <figcaption><span class="slide-tag">Booking</span> Therapist Availability Post</figcaption>
         </figure>
         <figure class="slide">
           <img src="assets/client-testimonials-social-proof.png" alt="Client testimonials graphic" loading="lazy" />
-          <figcaption>
-            <span class="slide-tag">Social Proof</span>
-            Client Testimonials
-          </figcaption>
+          <figcaption><span class="slide-tag">Social Proof</span> Client Testimonials</figcaption>
         </figure>
         <figure class="slide">
           <img src="assets/promo-dads-and-grads-gift-cards.png" alt="Dads and Grads gift card promotion" loading="lazy" />
-          <figcaption>
-            <span class="slide-tag">Seasonal</span>
-            Dads &amp; Grads Gift Card Promo
-          </figcaption>
+          <figcaption><span class="slide-tag">Seasonal</span> Dads &amp; Grads Gift Card Promo</figcaption>
         </figure>
 
-        <!-- Dot indicators — JS populates and updates these -->
         <div class="slideshow-dots" role="tablist" aria-label="Slide indicators"></div>
-
       </div>
     </section>
 

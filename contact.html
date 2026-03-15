@@ -12,6 +12,23 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" data-page-transition>Caitlin Britten</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav id="primary-navigation" class="site-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html" data-page-transition>Home</a></li>
+          <li><a href="gallery.html" data-page-transition>Portfolio</a></li>
+          <li><a href="about.html" data-page-transition>About</a></li>
+          <li><a href="contact.html" class="active" aria-current="page" data-page-transition>Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -19,27 +36,16 @@
 
   <main id="main-content" class="container">
 
-    <!-- Top section: heading + info card in two columns -->
     <section class="page-intro" aria-labelledby="contact-heading">
       <p class="eyebrow">Get in Touch</p>
       <h1 id="contact-heading">Let's Talk</h1>
       <p>Available for remote administrative and customer support roles. Reach out by email, connect on LinkedIn, or send a message below.</p>
 
       <div class="contact-info">
-        <p>
-          <strong>Email:</strong>
-          <a href="/cdn-cgi/l/email-protection#a1c2c3d3c8d5d5c4cfc3e1c6ccc0c8cd8fc2cecc"><span class="__cf_email__" data-cfemail="c6a5a4b4afb2b2a3a8a486a1aba7afaae8a5a9ab">[email&#160;protected]</span></a>
-        </p>
-        <p>
-          <strong>LinkedIn:</strong>
-          <a href="https://www.linkedin.com/in/caitlin-britten/" target="_blank" rel="noopener noreferrer">linkedin.com/in/caitlin-britten</a>
-        </p>
-        <p>
-          <strong>Location:</strong> Peabody, MA &mdash; Remote only
-        </p>
-        <p>
-          <strong>Availability:</strong> Open to remote W2 roles immediately
-        </p>
+        <p><strong>Email:</strong> <a href="mailto:cbrittenb@gmail.com">cbrittenb@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/caitlin-britten/" target="_blank" rel="noopener noreferrer">linkedin.com/in/caitlin-britten</a></p>
+        <p><strong>Location:</strong> Peabody, MA &mdash; Remote only</p>
+        <p><strong>Availability:</strong> Open to remote W2 roles immediately</p>
       </div>
 
       <div class="cta-row">
@@ -48,27 +54,12 @@
       </div>
     </section>
 
-    <!-- Contact form — full width below the info section -->
     <section class="section-block contact-form-section" aria-labelledby="contact-form-heading">
       <div class="section-heading">
         <p class="eyebrow">Send a Message</p>
         <h2 id="contact-form-heading">Drop Me a Note</h2>
       </div>
 
-      <!--
-        FORM SETUP INSTRUCTIONS
-        ────────────────────────
-        This form uses Formspree (formspree.io) — free, no server needed.
-        Steps:
-          1. Go to formspree.io and create a free account
-          2. Create a new form and add cbrittenb@gmail.com as the destination
-          3. Copy the endpoint ID (looks like "xabcdefg")
-          4. Replace YOUR_FORM_ID below with that ID
-             e.g. action="https://formspree.io/f/xabcdefg"
-
-        Free tier: 50 submissions/month, email notifications included.
-        Formspree also handles spam filtering automatically.
-      -->
       <form
         class="contact-form"
         action="https://formspree.io/f/mjgaeykk"
@@ -76,73 +67,39 @@
         novalidate
         aria-label="Contact form"
       >
-
         <div class="form-row form-row--two">
           <div class="form-group">
             <label for="contact-name">Your Name <span class="form-required" aria-hidden="true">*</span></label>
-            <input
-              type="text"
-              id="contact-name"
-              name="name"
-              autocomplete="name"
-              required
-              placeholder="Jane Smith"
-            />
+            <input type="text" id="contact-name" name="name" autocomplete="name" required placeholder="Jane Smith" />
           </div>
           <div class="form-group">
             <label for="contact-email">Your Email <span class="form-required" aria-hidden="true">*</span></label>
-            <input
-              type="email"
-              id="contact-email"
-              name="email"
-              autocomplete="email"
-              required
-              placeholder="jane@company.com"
-            />
+            <input type="email" id="contact-email" name="email" autocomplete="email" required placeholder="jane@company.com" />
           </div>
         </div>
 
         <div class="form-row form-row--two">
           <div class="form-group">
             <label for="contact-company">Company <span class="form-optional">(optional)</span></label>
-            <input
-              type="text"
-              id="contact-company"
-              name="company"
-              autocomplete="organization"
-              placeholder="Acme Co."
-            />
+            <input type="text" id="contact-company" name="company" autocomplete="organization" placeholder="Acme Co." />
           </div>
           <div class="form-group">
             <label for="contact-role">Role or Position <span class="form-optional">(optional)</span></label>
-            <input
-              type="text"
-              id="contact-role"
-              name="role"
-              placeholder="e.g. Remote Administrative Assistant"
-            />
+            <input type="text" id="contact-role" name="role" placeholder="e.g. Remote Administrative Assistant" />
           </div>
         </div>
 
         <div class="form-group">
           <label for="contact-message">Message <span class="form-required" aria-hidden="true">*</span></label>
-          <textarea
-            id="contact-message"
-            name="message"
-            rows="6"
-            required
-            placeholder="Tell me about the role or what you're looking for..."
-          ></textarea>
+          <textarea id="contact-message" name="message" rows="6" required placeholder="Tell me about the role or what you're looking for..."></textarea>
         </div>
 
-        <!-- Honeypot — hidden from humans, traps bots -->
         <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
         <div class="form-actions">
           <button type="submit" class="button-link form-submit">Send Message</button>
           <p class="form-note">I typically respond within one business day.</p>
         </div>
-
       </form>
     </section>
 
@@ -150,4 +107,9 @@
 
   <footer class="site-footer">
     <p>&copy; 2026 Caitlin Britten. All rights reserved.</p>
-   
+    <p>Peabody, MA &mdash; Available for remote work nationwide.</p>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
