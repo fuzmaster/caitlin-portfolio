@@ -31,7 +31,7 @@ var galleryData = [
     category: 'Promotional & Sales',
     toolsUsed: ['Canva'],
     businessImpact: 'Captured early holiday gift card revenue before the peak season.',
-    description: 'Designed a November gift card promotion targeting both members and non-members ahead of the holiday season. Clear pricing tiers and a clean layout made it easy to share across email and social without requiring any copy adjustments.'
+    description: 'Designed a November gift card promotion targeting both members and non-members ahead of the holiday season. Clear pricing tiers and a clean layout made it easy to share across email and social without requiring any copy adjustments. Note: Posted twice.'
   },
   {
     id: 'promo-holiday-gift-card-bogo',
@@ -52,15 +52,6 @@ var galleryData = [
     description: 'Seasonal promotional graphic for Father\'s Day and graduation season. Positioned gift cards as a thoughtful, easy gift option and included a clear offer to reduce purchase hesitation.'
   },
   {
-    id: 'promo-thanksgiving-gift-card',
-    filename: 'assets/promo-thanksgiving-gift-card-deal.jpeg',
-    title: 'Thanksgiving Gift Card Deal',
-    category: 'Promotional & Sales',
-    toolsUsed: ['Canva'],
-    businessImpact: 'Captured gift card sales during the Thanksgiving weekend shopping window.',
-    description: 'Holiday-timed promotion designed for Thanksgiving weekend, when clients are actively looking for gifts. Clean, warm design fits the seasonal moment while keeping the studio brand consistent.'
-  },
-  {
     id: 'promo-aromatherapy-lavender',
     filename: 'assets/aromatherapy-lavender-promo.png',
     title: 'Aromatherapy Lavender Promo',
@@ -76,7 +67,7 @@ var galleryData = [
     category: 'Promotional & Sales',
     toolsUsed: ['Canva'],
     businessImpact: 'Promoted a retail bundle to increase product sales alongside service bookings.',
-    description: 'Retail-focused graphic designed to highlight a skincare bundle and move product inventory. Clear product photography and simple pricing helped clients understand the value without reading a wall of text.'
+    description: 'Retail-focused graphic designed to highlight a skincare bundle and move product inventory. Clear product photography and simple pricing helped clients understand the value without reading a wall of text. Note: Created in studio.'
   },
   {
     id: 'membership-benefits-infographic',
@@ -85,7 +76,16 @@ var galleryData = [
     category: 'Promotional & Sales',
     toolsUsed: ['Canva'],
     businessImpact: 'Helped front desk staff close membership sign-ups by giving clients a clear visual breakdown of benefits.',
-    description: 'Designed a membership benefits breakdown to make the membership pitch faster and clearer. Used at the front desk as a leave-behind and posted on social to answer common "what do I get?" questions before clients even asked.'
+    description: 'Designed a membership benefits breakdown to make the membership pitch faster and clearer. Used at the front desk as a leave-behind and posted on social to answer common "what do I get?" questions before clients even asked. Note: Created in studio.'
+  },
+  {
+    id: 'promo-3ft-banner',
+    filename: 'assets/3ft-banner.jpeg',
+    title: '3ft Banner',
+    category: 'Promotional & Sales',
+    toolsUsed: ['Canva'],
+    businessImpact: 'Supported in-studio promotion with large-format signage for walk-in visibility.',
+    description: 'Large-format 3-foot promotional banner designed for on-site display to catch attention in the lobby and support front desk promotions. Note: Created for in-studio use.'
   },
   {
     id: 'massage-enhancements-explainer',
@@ -211,7 +211,7 @@ var galleryData = [
     category: 'Client Education',
     toolsUsed: ['Canva'],
     businessImpact: 'Increased add-on bookings for the salt stone service by explaining its benefits clearly.',
-    description: 'Service education graphic for the Himalayan salt stone add-on. Clients who understand what a service does are far more likely to book it. This graphic gave the front desk a visual tool to reference during checkout conversations and ran on social to pre-educate clients before they arrived.'
+    description: 'Service education graphic for the Himalayan salt stone add-on. Clients who understand what a service does are far more likely to book it. This graphic gave the front desk a visual tool to reference during checkout conversations and ran on social to pre-educate clients before they arrived. Note: Posted online for client education.'
   },
   {
     id: 'service-herbal-ritual-benefits',
@@ -220,7 +220,7 @@ var galleryData = [
     category: 'Client Education',
     toolsUsed: ['Canva'],
     businessImpact: 'Reduced repetitive front desk inquiries about the herbal ritual service by publishing answers proactively.',
-    description: 'Educational graphic breaking down the benefits of the herbal ritual service. Published on social and kept at the front desk as a reference, it answered the most common client questions before they needed to be asked.'
+    description: 'Educational graphic breaking down the benefits of the herbal ritual service. Published on social and kept at the front desk as a reference, it answered the most common client questions before they needed to be asked. Note: Posted online for client education.'
   },
   {
     id: 'meet-therapist-britney',
@@ -229,7 +229,7 @@ var galleryData = [
     category: 'Client Education',
     toolsUsed: ['Canva'],
     businessImpact: 'Built client-therapist familiarity before appointments to improve retention and rebooking rates.',
-    description: 'Staff introduction graphic for therapist Britney. Humanizing the team reduces client anxiety about booking with someone new and increases the likelihood of a client returning to the same therapist.'
+    description: 'Staff introduction graphic for therapist Britney. Humanizing the team reduces client anxiety about booking with someone new and increases the likelihood of a client returning to the same therapist. Note: Created in studio.'
   },
   {
     id: 'meet-therapist-morgan',
@@ -238,7 +238,7 @@ var galleryData = [
     category: 'Client Education',
     toolsUsed: ['Canva'],
     businessImpact: 'Helped new clients feel comfortable booking with Morgan before their first appointment.',
-    description: 'Staff introduction graphic for therapist Morgan. Posted when a new therapist joins the team, these introductions are one of the most effective ways to fill a new provider\'s schedule quickly.'
+    description: 'Staff introduction graphic for therapist Morgan. Posted when a new therapist joins the team, these introductions are one of the most effective ways to fill a new provider\'s schedule quickly. Note: Created in studio.'
   },
   {
     id: 'meet-therapist-benefits-facials',
@@ -247,7 +247,7 @@ var galleryData = [
     category: 'Client Education',
     toolsUsed: ['Canva'],
     businessImpact: 'Supported facial service bookings by educating clients on outcomes they could expect.',
-    description: 'Educational graphic outlining the benefits of regular facials. Designed to address the "is it worth it?" hesitation that prevents first-time facial clients from booking, with a clear, scannable layout.'
+    description: 'Educational graphic outlining the benefits of regular facials. Designed to address the "is it worth it?" hesitation that prevents first-time facial clients from booking, with a clear, scannable layout. Note: Created in studio.'
   },
   {
     id: 'meet-therapist-body-product',
@@ -256,7 +256,7 @@ var galleryData = [
     category: 'Client Education',
     toolsUsed: ['Canva'],
     businessImpact: 'Supported retail product sales by giving clients a visual breakdown of key products.',
-    description: 'Product education graphic for body care retail. Created to sit at the front desk and circulate on social, helping clients understand which products to use at home between appointments.'
+    description: 'Product education graphic for body care retail. Created to sit at the front desk and circulate on social, helping clients understand which products to use at home between appointments. Note: Created in studio.'
   },
   {
     id: 'meet-therapist-sunscreen-guide',
@@ -265,7 +265,7 @@ var galleryData = [
     category: 'Client Education',
     toolsUsed: ['Canva'],
     businessImpact: 'Drove retail sunscreen sales by making the product comparison easy to understand.',
-    description: 'Retail education graphic focused on sunscreen. Simple comparison layout helped clients quickly identify the right product for their skin type without needing extended consultation time at the front desk.'
+    description: 'Retail education graphic focused on sunscreen. Simple comparison layout helped clients quickly identify the right product for their skin type without needing extended consultation time at the front desk. Note: Created in studio.'
   },
   {
     id: 'meet-therapist-sanitas',
@@ -274,7 +274,7 @@ var galleryData = [
     category: 'Client Education',
     toolsUsed: ['Canva'],
     businessImpact: 'Introduced the Sanitas product line to drive retail sales and skincare add-on bookings.',
-    description: 'Brand introduction graphic for the Sanitas skincare line. Designed to give clients context on the brand\'s philosophy and key products, supporting both retail sales and skincare service upsells.'
+    description: 'Brand introduction graphic for the Sanitas skincare line. Designed to give clients context on the brand\'s philosophy and key products, supporting both retail sales and skincare service upsells. Note: Created in studio.'
   },
   {
     id: 'meet-therapist-addons',
@@ -283,7 +283,7 @@ var galleryData = [
     category: 'Client Education',
     toolsUsed: ['Canva'],
     businessImpact: 'Increased add-on attachment rate by making the full menu visible and easy to reference.',
-    description: 'Visual add-on services menu designed for front desk use and social. Giving clients a full picture of available enhancements before they arrive means they come in ready to say yes, rather than being introduced to options cold at checkout.'
+    description: 'Visual add-on services menu designed for front desk use and social. Giving clients a full picture of available enhancements before they arrive means they come in ready to say yes, rather than being introduced to options cold at checkout. Note: Created in studio.'
   },
 
   // ─── COMMUNITY & SOCIAL PROOF ─────────────────────────────────────────────
@@ -396,7 +396,7 @@ var galleryData = [
     category: 'Video Reels',
     toolsUsed: ['Canva'],
     businessImpact: "Drove Mother's Day gift card sales through an animated reel timed to the holiday window.",
-    description: "Animated Mother's Day gift card promotion. Published in the two weeks leading up to Mother's Day, when gift card search and purchase intent peaks for the wellness category."
+    description: "Animated Mother's Day gift card promotion. Published in the two weeks leading up to Mother's Day, when gift card search and purchase intent peaks for the wellness category. Note: Published online and used for in-studio promotion."
   }
 
 ];

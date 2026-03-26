@@ -64,6 +64,25 @@ document.addEventListener('DOMContentLoaded', () => {
     return [item.filename];
   };
 
+  const getProjectChannels = (item) => {
+    const description = (item.description || '').toLowerCase();
+    const channels = [];
+    const isInStudio = description.includes('in studio') || description.includes('in-studio');
+    const isOnline =
+      description.includes('online') ||
+      description.includes('posted on social') ||
+      description.includes('published on social');
+
+    if (isOnline || !isInStudio) {
+      channels.push('Online');
+    }
+    if (isInStudio) {
+      channels.push('In Studio');
+    }
+
+    return channels;
+  };
+
   const groupByCategory = (items) => {
     const grouped = new Map();
     items.forEach((item, index) => {
@@ -108,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const createGalleryButton = (entry) => {
     const item      = entry.item;
     const mediaType = toMediaType(item);
+    const channels  = getProjectChannels(item);
 
     const button = document.createElement('button');
     button.type      = 'button';
@@ -123,8 +143,20 @@ document.addEventListener('DOMContentLoaded', () => {
     title.className   = 'item-title';
     title.textContent = item.title;
 
+    const meta = document.createElement('div');
+    meta.className = 'item-meta';
+    channels.forEach((channel) => {
+      const badge = document.createElement('span');
+      badge.className = 'channel-badge';
+      badge.textContent = channel;
+      meta.appendChild(badge);
+    });
+
     button.appendChild(imageWrap);
     button.appendChild(title);
+    if (channels.length > 0) {
+      button.appendChild(meta);
+    }
     return button;
   };
 
