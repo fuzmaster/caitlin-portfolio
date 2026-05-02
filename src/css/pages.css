@@ -26,7 +26,7 @@
   overflow: hidden;
   box-shadow: var(--shadow-soft);
   min-height: min(60vw, 560px);
-  background: #eef2f4;
+  background: var(--color-surface);
 }
 
 .featured-carousel__slide {
@@ -90,8 +90,9 @@
 .filter-tabs button {
   min-height: 40px;
   border-radius: 999px;
-  border: 1px solid #b8c7d2;
-  background: #fff;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
   padding: 0.35rem 0.85rem;
   font: inherit;
   font-size: 0.93rem;
@@ -123,7 +124,7 @@
 .portfolio-card {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: #fff;
+  background: var(--color-surface);
   overflow: hidden;
 }
 
@@ -138,9 +139,22 @@
   padding: 0;
 }
 
-.portfolio-card img {
-  width: 100%;
+.portfolio-card__media {
   aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #1c2e3e;
+}
+
+.portfolio-card__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -165,7 +179,7 @@
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(10, 20, 27, 0.75);
+  background: rgba(5, 10, 15, 0.88);
   display: none;
   align-items: center;
   justify-content: center;
@@ -179,7 +193,7 @@
   width: min(900px, 100%);
   max-height: calc(100dvh - 2rem);
   overflow: auto;
-  background: #fff;
+  background: var(--color-surface);
   border-radius: var(--radius-md);
 }
 
@@ -187,7 +201,7 @@
   width: 100%;
   max-height: 62vh;
   object-fit: contain;
-  background: #f2f5f8;
+  background: #0b1620;
 }
 
 .modal__body { padding: var(--space-4); }
@@ -197,7 +211,8 @@
   top: 1.2rem;
   right: 1.2rem;
   border: 0;
-  background: #fff;
+  background: var(--color-surface);
+  color: var(--color-text);
   width: 42px;
   height: 42px;
   border-radius: 999px;

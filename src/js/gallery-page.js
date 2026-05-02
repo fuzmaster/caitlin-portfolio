@@ -22,13 +22,16 @@ const VIDEO_THUMBNAILS = {
 
 const toMediaType = (item) => item.type === 'video' ? 'video' : 'image';
 
+const toAssetUrl = (filename) => encodeURI(`/${filename}`);
+
 const toOptimizedBase = (filename) => {
   const cleanName = filename.replace(/^assets\//, '').replace(/\.[^.]+$/, '');
-  return `/assets/optimized/${cleanName}`;
+  return encodeURI(`/assets/optimized/${cleanName}`);
 };
 
 const buildCardMedia = (item) => {
   const wrapper = document.createElement('div');
+  wrapper.className = 'portfolio-card__media';
 
   if (toMediaType(item) === 'video') {
     const image = document.createElement('img');
@@ -39,11 +42,11 @@ const buildCardMedia = (item) => {
     ].filter(Boolean);
 
     let index = 0;
-    image.src = `/${candidates[index]}`;
+    image.src = toAssetUrl(candidates[index]);
     image.addEventListener('error', () => {
       index += 1;
       if (index < candidates.length) {
-        image.src = `/${candidates[index]}`;
+        image.src = toAssetUrl(candidates[index]);
       }
     });
 
@@ -64,7 +67,7 @@ const buildCardMedia = (item) => {
   sourceWebp.sizes = '(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 25vw';
 
   const image = document.createElement('img');
-  image.src = `/${item.filename}`;
+  image.src = toAssetUrl(item.filename);
   image.alt = item.alt;
   image.loading = 'lazy';
   image.decoding = 'async';
@@ -142,13 +145,13 @@ const renderGallery = () => {
       video.controls = true;
       video.playsInline = true;
       video.preload = 'metadata';
-      video.src = `/${item.filename}`;
+      video.src = toAssetUrl(item.filename);
       video.setAttribute('aria-label', item.alt);
       modalMediaWrap.appendChild(video);
     } else {
       const image = document.createElement('img');
       image.className = 'modal__media';
-      image.src = `/${item.filename}`;
+      image.src = toAssetUrl(item.filename);
       image.alt = item.alt;
       modalMediaWrap.appendChild(image);
     }

@@ -1,13 +1,13 @@
 :root {
-  --color-bg: #f8f6f1;
-  --color-surface: #ffffff;
-  --color-text: #16212d;
-  --color-muted: #455665;
-  --color-border: #d8dee4;
-  --color-accent: #0d5d7a;
-  --color-accent-strong: #08465c;
-  --color-warm: #cc6b2c;
-  --focus-ring: #0d5d7a;
+  --color-bg: #0f1c26;
+  --color-surface: #162231;
+  --color-text: #eee9e1;
+  --color-muted: #8fa4b4;
+  --color-border: #253545;
+  --color-accent: #e8735a;
+  --color-accent-strong: #cc5740;
+  --color-warm: #e8735a;
+  --focus-ring: #e8735a;
 
   --font-body: "Manrope", "Segoe UI", Arial, sans-serif;
   --font-heading: "Fraunces", Georgia, serif;
@@ -32,7 +32,7 @@
   --radius-md: 1rem;
   --radius-lg: 1.3rem;
 
-  --shadow-soft: 0 8px 24px rgba(13, 32, 47, 0.08);
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.40);
   --container: 1120px;
 
   --header-height: 76px;

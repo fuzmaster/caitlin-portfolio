@@ -26,10 +26,6 @@ for (const relativeFile of files) {
   const metadata = await image.metadata();
 
   for (const width of widths) {
-    if (metadata.width && width > metadata.width) {
-      continue;
-    }
-
     const outFile = path.join(targetDir, `${parsed.name}-${width}.webp`);
     await sharp(srcPath)
       .resize({ width, withoutEnlargement: true })
