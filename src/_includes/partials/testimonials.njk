@@ -1,0 +1,28 @@
+<section class="section testimonials" aria-labelledby="testimonials-heading">
+  <div class="l-shell">
+    <p class="kicker">Testimonials</p>
+    <h2 id="testimonials-heading">Trusted by high-volume wellness teams</h2>
+    <ul class="testimonials__list">
+      {% for item in testimonials %}
+      <li class="testimonial-card">
+        <blockquote>{{ item.quote }}</blockquote>
+        <p class="testimonial-card__meta">{{ item.name }} - {{ item.company }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="logo-row" aria-label="Businesses supported">
+      <p class="logo-row__label">Businesses supported</p>
+      <ul>
+        <li>
+          <img src="/assets/images/logos/elements-massage-beverly.svg" alt="Elements Massage Beverly logo" loading="lazy" decoding="async" width="180" height="60" />
+        </li>
+        <li>
+          <img src="/assets/images/logos/north-shore-wellness-team.svg" alt="North Shore Wellness Team logo" loading="lazy" decoding="async" width="180" height="60" />
+        </li>
+        <li>
+          <img src="/assets/images/logos/boutique-recovery-studio.svg" alt="Boutique Recovery Studio logo" loading="lazy" decoding="async" width="180" height="60" />
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

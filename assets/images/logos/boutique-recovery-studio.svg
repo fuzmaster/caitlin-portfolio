@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120" role="img" aria-labelledby="title desc">
+  <title id="title">Boutique Recovery Studio logo</title>
+  <desc id="desc">Wordmark style logo for Boutique Recovery Studio.</desc>
+  <rect width="360" height="120" rx="18" fill="#ffffff" stroke="#c7d4dd" stroke-width="2"/>
+  <rect x="32" y="36" width="30" height="48" rx="9" fill="#0d5d7a"/>
+  <circle cx="77" cy="60" r="12" fill="#cc6b2c"/>
+  <text x="104" y="54" font-family="Manrope, Arial, sans-serif" font-size="20" font-weight="700" fill="#143247">Boutique Recovery</text>
+  <text x="104" y="80" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="600" fill="#0d5d7a">Studio</text>
+</svg>

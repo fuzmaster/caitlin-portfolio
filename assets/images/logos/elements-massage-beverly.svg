@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120" role="img" aria-labelledby="title desc">
+  <title id="title">Elements Massage Beverly logo</title>
+  <desc id="desc">Wordmark style logo for Elements Massage Beverly.</desc>
+  <rect width="360" height="120" rx="18" fill="#ffffff" stroke="#c7d4dd" stroke-width="2"/>
+  <circle cx="48" cy="60" r="20" fill="#0d5d7a"/>
+  <text x="80" y="54" font-family="Manrope, Arial, sans-serif" font-size="22" font-weight="700" fill="#143247">Elements Massage</text>
+  <text x="80" y="80" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="600" fill="#cc6b2c">Beverly</text>
+</svg>

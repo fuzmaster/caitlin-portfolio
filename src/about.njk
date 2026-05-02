@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+title: About Caitlin Britten | Remote admin specialist
+description: Meet Caitlin Britten, a remote administrative and customer support specialist with 3+ years of front desk leadership in wellness operations.
+canonicalPath: /about/
+ogType: profile
+structuredData:
+  '@context': https://schema.org
+  '@type': ProfilePage
+  mainEntity:
+    '@type': Person
+    name: Caitlin Britten
+    jobTitle: Remote Administrative and Customer Support Specialist
+    worksFor:
+      '@type': Organization
+      name: Wellness Studios and Service Teams
+---
+<section class="section about-hero" aria-labelledby="about-heading">
+  <div class="l-shell split-layout">
+    <figure class="profile-photo">
+      <img src="/assets/images/avatar.png" alt="Professional headshot of Caitlin Britten" loading="eager" decoding="async" width="640" height="640" srcset="/assets/images/avatar.png 640w" sizes="(max-width: 700px) 280px, 360px" />
+    </figure>
+    <div>
+      <p class="kicker">About</p>
+      <h1 id="about-heading">Caitlin Britten</h1>
+      <p class="lede">3+ years running the front desk for a high-volume wellness studio, balancing scheduling, inbound calls, client education, and campaign execution.</p>
+      <p>I work from a dedicated home office in Peabody, Massachusetts and support wellness businesses that need steady daily execution without adding onsite overhead. My background combines customer care, process consistency, and creative production in Canva and Constant Contact.</p>
+      <p><a class="btn btn--secondary" href="/assets/Caitlin_Britten_Resume.docx" download>Download resume</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="experience-heading">
+  <div class="l-shell">
+    <h2 id="experience-heading">Core strengths</h2>
+    <ul class="card-grid" role="list">
+      <li class="card"><h3>Scheduling and provider flow</h3><p>Mindbody calendar management, waitlist prioritization, and appointment optimization for multi-provider studios.</p></li>
+      <li class="card"><h3>Client communication</h3><p>High-volume call handling, service guidance, and calm issue resolution that protects retention.</p></li>
+      <li class="card"><h3>Content and campaign production</h3><p>Social graphics, booking updates, and email campaigns that keep audiences informed and engaged.</p></li>
+    </ul>
+  </div>
+</section>
+
+{% include "partials/testimonials.njk" %}

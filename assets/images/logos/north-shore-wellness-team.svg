@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120" role="img" aria-labelledby="title desc">
+  <title id="title">North Shore Wellness Team logo</title>
+  <desc id="desc">Wordmark style logo for North Shore Wellness Team.</desc>
+  <rect width="360" height="120" rx="18" fill="#ffffff" stroke="#c7d4dd" stroke-width="2"/>
+  <path d="M38 84 C54 46 72 46 90 84" fill="none" stroke="#0d5d7a" stroke-width="6" stroke-linecap="round"/>
+  <text x="108" y="54" font-family="Manrope, Arial, sans-serif" font-size="21" font-weight="700" fill="#143247">North Shore</text>
+  <text x="108" y="80" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="600" fill="#cc6b2c">Wellness Team</text>
+</svg>
