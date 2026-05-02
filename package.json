@@ -1,0 +1,20 @@
+{
+  "name": "caities-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "clean": "rimraf _site src/assets/build",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "build:assets": "node scripts/build-assets.mjs",
+    "dev": "npm run build:assets && eleventy --serve",
+    "build": "npm run clean && npm run optimize:images && npm run build:assets && eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "esbuild": "^0.25.4",
+    "fast-glob": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "sharp": "^0.34.1"
+  }
+}
