@@ -1,0 +1,77 @@
+---
+layout: layouts/base.njk
+title: Remote administrative and customer support for wellness studios | Caitlin Britten
+description: Remote front desk operations, scheduling, and client communication support for wellness studios that need reliable daily execution.
+canonicalPath: /
+ogType: website
+structuredData:
+  '@context': https://schema.org
+  '@type': ProfessionalService
+  name: Caitlin Britten Remote Administrative Support
+  url: https://caitlinbritten.com/
+  email: mailto:cbrittenb@gmail.com
+  areaServed:
+    - Peabody, MA
+    - Beverly, MA
+    - North Shore, MA
+  description: Remote front desk operations, scheduling support, and client communication for wellness studios.
+---
+<section class="hero">
+  <div class="l-shell hero__inner">
+    <p class="kicker">Remote Operations Support</p>
+    <h1>Remote administrative and customer support for wellness studios</h1>
+    <p class="hero__subhead">Keep your providers fully booked and your clients cared for with dependable front desk systems, responsive communication, and campaign-ready content support.</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="/contact/">Schedule a consultation</a>
+      <a class="btn btn--ghost" href="/gallery/">See portfolio</a>
+    </div>
+  </div>
+</section>
+
+<section class="section services" aria-labelledby="services-heading">
+  <div class="l-shell">
+    <p class="kicker">Services</p>
+    <h2 id="services-heading">Operational support that removes daily friction</h2>
+    <ul class="card-grid" role="list">
+      {% for service in services %}
+      <li class="card">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="featured-heading">
+  <div class="l-shell">
+    <p class="kicker">Featured Work</p>
+    <h2 id="featured-heading">A quick look at campaign execution</h2>
+    <div class="featured-carousel" data-carousel>
+      <button class="featured-carousel__control" type="button" data-prev aria-label="Previous featured sample">&#8592;</button>
+      <button class="featured-carousel__control" type="button" data-next aria-label="Next featured sample">&#8594;</button>
+
+      <figure class="featured-carousel__slide is-active" data-slide>
+        <img src="/assets/promo-member-savings-event.png" alt="Promotional graphic announcing a member-only savings event to increase off-peak bookings" loading="eager" width="1200" height="900" srcset="/assets/optimized/promo-member-savings-event-640.webp 640w, /assets/optimized/promo-member-savings-event-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 80vw" />
+      </figure>
+      <figure class="featured-carousel__slide" data-slide>
+        <img src="/assets/booking-availability-promo.png" alt="Booking update post helping clients self-serve appointment availability without calling the front desk" loading="lazy" width="1200" height="900" srcset="/assets/optimized/booking-availability-promo-640.webp 640w, /assets/optimized/booking-availability-promo-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 80vw" />
+      </figure>
+      <figure class="featured-carousel__slide" data-slide>
+        <img src="/assets/client-testimonials-social-proof.png" alt="Social proof graphic featuring client testimonials used to build trust with new prospects" loading="lazy" width="1200" height="900" srcset="/assets/optimized/client-testimonials-social-proof-640.webp 640w, /assets/optimized/client-testimonials-social-proof-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 80vw" />
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section metrics" aria-label="Performance highlights">
+  <div class="l-shell">
+    <ul class="metric-list" role="list">
+      <li><strong>3+ years</strong><span>running front desk operations for a high-volume wellness studio</span></li>
+      <li><strong>50+ calls/day</strong><span>handled with consistent client follow-through and de-escalation</span></li>
+      <li><strong>8+ providers</strong><span>coordinated in Mindbody with proactive schedule balancing</span></li>
+    </ul>
+  </div>
+</section>
+
+{% include "partials/testimonials.njk" %}

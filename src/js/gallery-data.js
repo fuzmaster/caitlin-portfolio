@@ -2,7 +2,7 @@
  * gallery-data.js
  */
 
-var galleryData = [
+const galleryData = [
 
   // ─── PROMOTIONAL & SALES ──────────────────────────────────────────────────
 
@@ -400,3 +400,18 @@ var galleryData = [
   }
 
 ];
+
+const normalizeAltText = (item) => {
+  if (item.alt && item.alt.trim()) {
+    return item.alt;
+  }
+  if (item.description && item.description.trim()) {
+    return item.description;
+  }
+  return `${item.title} portfolio sample`; 
+};
+
+export default galleryData.map((item) => ({
+  ...item,
+  alt: normalizeAltText(item)
+}));

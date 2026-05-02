@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+title: Portfolio | Campaigns, booking, and support assets
+description: Explore categorized portfolio work including promotions, seasonal campaigns, booking updates, community content, and video reels.
+canonicalPath: /gallery/
+ogType: website
+pageScript: js/gallery-page.js
+structuredData:
+  '@context': https://schema.org
+  '@type': CollectionPage
+  name: Caitlin Britten Portfolio
+  description: Categorized portfolio of campaign and operations support assets for wellness studios.
+---
+<section class="section" aria-labelledby="portfolio-heading">
+  <div class="l-shell">
+    <p class="kicker">Portfolio</p>
+    <h1 id="portfolio-heading">Campaign and operations work by category</h1>
+    <p class="lede">Filter examples by campaign type to quickly review promotions, booking communications, education content, and short-form video.</p>
+
+    <nav class="filter-tabs" aria-label="Portfolio filters">
+      <ul id="portfolio-filters" role="tablist" aria-label="Portfolio category filters"></ul>
+    </nav>
+
+    <div id="portfolio-categories"></div>
+  </div>
+</section>
