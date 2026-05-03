@@ -9,6 +9,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "favicon.svg": "favicon.svg" });
   eleventyConfig.addPassthroughCopy({ "apple-touch-icon.png": "apple-touch-icon.png" });
   eleventyConfig.addPassthroughCopy({ "src/assets/build": "assets/build" });
+  eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
 
   eleventyConfig.addFilter('jsonStringify', (value) => JSON.stringify(value));
 
