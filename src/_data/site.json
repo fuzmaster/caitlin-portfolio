@@ -8,6 +8,8 @@
   "phoneHref": "+19789796500",
   "email": "cbrittenb@gmail.com",
   "linkedin": "https://www.linkedin.com/in/caitlin-britten/",
+  "avatarImage": "/assets/images/avatar.png",
+  "socialImage": "/assets/images/social-preview.png",
   "footerPrivacy": "Your information is only used to respond to your inquiry and is never sold.",
   "navigation": [
     { "label": "Home", "url": "/" },

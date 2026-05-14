@@ -5,12 +5,13 @@
   "type": "commonjs",
   "scripts": {
     "clean": "rimraf _site src/assets/build",
+    "build:social": "node scripts/build-social-image.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "build:assets": "node scripts/build-assets.mjs",
     "build:resume": "node scripts/build-resume-docx.mjs",
     "verify:build": "npm run build && node scripts/verify-build-clean.mjs",
     "dev": "npm run build:assets && eleventy --serve",
-    "build": "npm run clean && npm run optimize:images && npm run build:assets && npm run build:resume && eleventy"
+    "build": "npm run clean && npm run build:social && npm run optimize:images && npm run build:assets && npm run build:resume && eleventy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
