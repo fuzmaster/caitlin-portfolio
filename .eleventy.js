@@ -11,8 +11,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets/build": "assets/build" });
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
 
-  eleventyConfig.addFilter('jsonStringify', (value) => JSON.stringify(value));
-
   eleventyConfig.addFilter('assetUrl', (logicalPath) => {
     const manifestPath = path.join(process.cwd(), 'src', '_data', 'asset-manifest.json');
     if (!fs.existsSync(manifestPath)) {

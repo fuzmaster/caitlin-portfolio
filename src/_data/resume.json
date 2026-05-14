@@ -1,0 +1,75 @@
+{
+  "name": "Caitlin Britten",
+  "headline": "Remote Administrative and Customer Support Specialist",
+  "summary": "Remote administrative and customer support specialist with 3+ years in high-volume wellness operations, plus earlier experience managing detailed parent communication, records, and compliance in early education settings.",
+  "location": "Peabody, MA",
+  "remoteSetup": "Dedicated home office and high-speed internet",
+  "competencies": [
+    "High-volume call triage",
+    "Calendar management",
+    "Scheduling coordination",
+    "Customer issue resolution",
+    "Data entry",
+    "Record keeping",
+    "HIPAA privacy standards",
+    "Payment processing"
+  ],
+  "tools": [
+    "Mindbody",
+    "Constant Contact",
+    "Canva",
+    "Microsoft Office",
+    "Google Workspace",
+    "POS systems",
+    "Facebook",
+    "Instagram"
+  ],
+  "snapshot": [
+    {
+      "value": "50+ calls/day",
+      "label": "handled with scheduling, payments, triage, and complaint resolution"
+    },
+    {
+      "value": "8+ therapists",
+      "label": "scheduled in Mindbody while keeping calendar gaps low"
+    },
+    {
+      "value": "Remote-ready",
+      "label": "dedicated home office, high-speed internet, and independent daily workflow"
+    }
+  ],
+  "experience": [
+    {
+      "date": "Nov 2022 - Jan 2026",
+      "role": "Receptionist / Administrative Assistant",
+      "company": "Elements Massage",
+      "location": "Beverly, MA",
+      "bullets": [
+        "Answered 50+ inbound calls daily, triaging inquiries, processing payments, and resolving complaints before they escalated.",
+        "Managed daily scheduling for 8+ massage therapists in Mindbody, keeping the book full and appointment gaps low.",
+        "Handled sensitive client records and ran opening/closing procedures independently.",
+        "Managed daily social media posting and built email campaigns in Constant Contact and Canva."
+      ]
+    },
+    {
+      "date": "Jul 2019 - Oct 2022",
+      "role": "Lead Educator & Administrative Support",
+      "company": "Early Childhood Education Centers",
+      "location": "North Shore, MA",
+      "bullets": [
+        "Tracked detailed progress, health, and behavioral records for 15+ children at a time.",
+        "Delivered sensitive parent updates daily, including behavioral concerns and health issues, with patience and care.",
+        "Maintained compliance with state regulations and organizational safety standards.",
+        "Helped plan and adjust daily classroom programs as schedules and priorities shifted."
+      ]
+    }
+  ],
+  "education": {
+    "school": "North Shore Community College",
+    "degree": "Associate of Science, Early Childhood Education and Teaching"
+  },
+  "certifications": [
+    "EEC Certification, Massachusetts Department of Early Education and Care",
+    "OSHA Safety Training, OSHA Safety Training Institute"
+  ]
+}

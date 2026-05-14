@@ -7,11 +7,13 @@
     "clean": "rimraf _site src/assets/build",
     "optimize:images": "node scripts/optimize-images.mjs",
     "build:assets": "node scripts/build-assets.mjs",
+    "build:resume": "node scripts/build-resume-docx.mjs",
     "dev": "npm run build:assets && eleventy --serve",
-    "build": "npm run clean && npm run optimize:images && npm run build:assets && eleventy"
+    "build": "npm run clean && npm run optimize:images && npm run build:assets && npm run build:resume && eleventy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "docx": "^9.6.1",
     "esbuild": "^0.25.4",
     "fast-glob": "^3.3.3",
     "rimraf": "^6.0.1",

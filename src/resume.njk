@@ -4,31 +4,12 @@ title: Resume | Caitlin Britten
 description: Resume for Caitlin Britten, a remote administrative and customer support specialist with scheduling, client communication, payment processing, and campaign support experience.
 canonicalPath: /resume/
 ogType: profile
-structuredData:
-  '@context': https://schema.org
-  '@type': Person
-  name: Caitlin Britten
-  jobTitle: Remote Administrative and Customer Support Specialist
-  email: mailto:cbrittenb@gmail.com
-  telephone: '+19789796500'
-  address:
-    '@type': PostalAddress
-    addressLocality: Peabody
-    addressRegion: MA
-  knowsAbout:
-    - Scheduling coordination
-    - Customer support
-    - Calendar management
-    - Mindbody
-    - Constant Contact
-    - Canva
-    - Payment processing
 ---
 <section class="section resume-hero" aria-labelledby="resume-heading">
   <div class="l-shell">
     <p class="kicker">Resume</p>
-    <h1 id="resume-heading">Caitlin Britten</h1>
-    <p class="lede">Remote administrative and customer support specialist with 3+ years in high-volume wellness operations, plus earlier experience managing detailed parent communication, records, and compliance in early education settings.</p>
+    <h1 id="resume-heading">{{ resume.name }}</h1>
+    <p class="lede">{{ resume.summary }}</p>
     <div class="hero__actions hero__actions--left">
       <a class="btn btn--primary" href="/contact/">Contact Caitlin</a>
       <a class="btn btn--ghost" href="/assets/Caitlin_Britten_Resume.docx" download>Download DOCX</a>
@@ -40,9 +21,9 @@ structuredData:
   <div class="l-shell">
     <h2 id="resume-proof-heading">Hiring Snapshot</h2>
     <ul class="metric-list" role="list">
-      <li><strong>50+ calls/day</strong><span>handled with scheduling, payments, triage, and complaint resolution</span></li>
-      <li><strong>8+ therapists</strong><span>scheduled in Mindbody while keeping calendar gaps low</span></li>
-      <li><strong>Remote-ready</strong><span>dedicated home office, high-speed internet, and independent daily workflow</span></li>
+      {% for item in resume.snapshot %}
+      <li><strong>{{ item.value }}</strong><span>{{ item.label }}</span></li>
+      {% endfor %}
     </ul>
   </div>
 </section>
@@ -53,28 +34,18 @@ structuredData:
       <p class="kicker">Core Competencies</p>
       <h2 id="competencies-heading">Administrative and support skills</h2>
       <ul class="skill-list" role="list">
-        <li>High-volume call triage</li>
-        <li>Calendar management</li>
-        <li>Scheduling coordination</li>
-        <li>Customer issue resolution</li>
-        <li>Data entry</li>
-        <li>Record keeping</li>
-        <li>HIPAA privacy standards</li>
-        <li>Payment processing</li>
+        {% for item in resume.competencies %}
+        <li>{{ item }}</li>
+        {% endfor %}
       </ul>
     </div>
     <div>
       <p class="kicker">Software</p>
       <h2>Tools</h2>
       <ul class="skill-list" role="list">
-        <li>Mindbody</li>
-        <li>Constant Contact</li>
-        <li>Canva</li>
-        <li>Microsoft Office</li>
-        <li>Google Workspace</li>
-        <li>POS systems</li>
-        <li>Facebook</li>
-        <li>Instagram</li>
+        {% for item in resume.tools %}
+        <li>{{ item }}</li>
+        {% endfor %}
       </ul>
     </div>
   </div>
@@ -85,28 +56,18 @@ structuredData:
     <p class="kicker">Experience</p>
     <h2 id="experience-heading">Professional experience</h2>
     <div class="timeline">
+      {% for job in resume.experience %}
       <article class="timeline-item">
-        <p class="timeline-item__eyebrow">Nov 2022 - Jan 2026</p>
-        <h3>Receptionist / Administrative Assistant</h3>
-        <p class="timeline-item__meta">Elements Massage, Beverly, MA</p>
+        <p class="timeline-item__eyebrow">{{ job.date }}</p>
+        <h3>{{ job.role }}</h3>
+        <p class="timeline-item__meta">{{ job.company }}, {{ job.location }}</p>
         <ul>
-          <li>Answered 50+ inbound calls daily, triaging inquiries, processing payments, and resolving complaints before they escalated.</li>
-          <li>Managed daily scheduling for 8+ massage therapists in Mindbody, keeping the book full and appointment gaps low.</li>
-          <li>Handled sensitive client records and ran opening/closing procedures independently.</li>
-          <li>Managed daily social media posting and built email campaigns in Constant Contact and Canva.</li>
+          {% for bullet in job.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
         </ul>
       </article>
-      <article class="timeline-item">
-        <p class="timeline-item__eyebrow">Jul 2019 - Oct 2022</p>
-        <h3>Lead Educator & Administrative Support</h3>
-        <p class="timeline-item__meta">Early Childhood Education Centers, North Shore, MA</p>
-        <ul>
-          <li>Tracked detailed progress, health, and behavioral records for 15+ children at a time.</li>
-          <li>Delivered sensitive parent updates daily, including behavioral concerns and health issues, with patience and care.</li>
-          <li>Maintained compliance with state regulations and organizational safety standards.</li>
-          <li>Helped plan and adjust daily classroom programs as schedules and priorities shifted.</li>
-        </ul>
-      </article>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -115,15 +76,16 @@ structuredData:
   <div class="l-shell resume-grid">
     <div>
       <p class="kicker">Education</p>
-      <h2 id="education-heading">North Shore Community College</h2>
-      <p>Associate of Science, Early Childhood Education and Teaching</p>
+      <h2 id="education-heading">{{ resume.education.school }}</h2>
+      <p>{{ resume.education.degree }}</p>
     </div>
     <div>
       <p class="kicker">Certifications</p>
       <h2>Licenses and training</h2>
       <ul class="plain-list" role="list">
-        <li>EEC Certification, Massachusetts Department of Early Education and Care</li>
-        <li>OSHA Safety Training, OSHA Safety Training Institute</li>
+        {% for item in resume.certifications %}
+        <li>{{ item }}</li>
+        {% endfor %}
       </ul>
     </div>
   </div>

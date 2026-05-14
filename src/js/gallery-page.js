@@ -45,6 +45,8 @@ const createTextElement = (tagName, className, text) => {
 const getFocusableElements = (root) => Array.from(root.querySelectorAll(FOCUSABLE_SELECTOR))
   .filter((element) => element instanceof HTMLElement && !element.hidden);
 
+const inertState = new WeakMap();
+
 const setPageInert = (modal, isInert) => {
   Array.from(document.body.children).forEach((child) => {
     if (child === modal) {
@@ -52,11 +54,32 @@ const setPageInert = (modal, isInert) => {
     }
 
     if (isInert) {
+      inertState.set(child, {
+        ariaHidden: child.getAttribute('aria-hidden'),
+        inert: child.hasAttribute('inert')
+      });
       child.setAttribute('inert', '');
       child.setAttribute('aria-hidden', 'true');
     } else {
-      child.removeAttribute('inert');
-      child.removeAttribute('aria-hidden');
+      const previousState = inertState.get(child);
+
+      if (!previousState) {
+        return;
+      }
+
+      if (previousState.inert) {
+        child.setAttribute('inert', '');
+      } else {
+        child.removeAttribute('inert');
+      }
+
+      if (previousState.ariaHidden === null) {
+        child.removeAttribute('aria-hidden');
+      } else {
+        child.setAttribute('aria-hidden', previousState.ariaHidden);
+      }
+
+      inertState.delete(child);
     }
   });
 };
@@ -297,17 +320,13 @@ const renderGallery = () => {
     orderedCategories.forEach((category) => {
       const categoryId = toDomId(category);
       const li = document.createElement('li');
-      li.setAttribute('role', 'presentation');
 
       const button = document.createElement('button');
       button.type = 'button';
       button.id = `filter-${categoryId}`;
-      button.setAttribute('role', 'tab');
-      button.setAttribute('aria-controls', 'portfolio-categories');
       button.dataset.filter = category;
       button.textContent = category;
-      button.setAttribute('aria-selected', String(activeFilter === category));
-      button.tabIndex = activeFilter === category ? 0 : -1;
+      button.setAttribute('aria-pressed', String(activeFilter === category));
 
       button.addEventListener('click', () => {
         activeFilter = category;
