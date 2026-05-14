@@ -3,7 +3,7 @@
   left: -9999px;
   top: 0;
   background: var(--color-text);
-  color: #fff;
+  color: var(--color-bg);
   padding: 0.65rem 0.8rem;
   border-radius: var(--radius-sm);
 }

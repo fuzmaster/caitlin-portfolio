@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 title: Contact | Caitlin Britten
-description: Schedule a consultation with Caitlin Britten for remote admin support, scheduling operations, and client communication services.
+description: Contact Caitlin Britten about remote administrative support, scheduling coordination, customer support, and service-team operations roles.
 canonicalPath: /contact/
 ogType: website
 structuredData:
@@ -13,16 +13,19 @@ structuredData:
   <div class="l-shell split-layout split-layout--contact">
     <div>
       <p class="kicker">Contact</p>
-      <h1 id="contact-heading">Let's talk about your studio workflow</h1>
-      <p class="lede">Share your biggest operations bottleneck and I will propose a practical support plan.</p>
+      <h1 id="contact-heading">Contact Caitlin about remote admin support</h1>
+      <p class="lede">Reach out about remote administrative, scheduling, customer support, or operations assistant opportunities.</p>
       <ul class="contact-list" role="list">
         <li><strong>Email:</strong> <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        <li><strong>Phone:</strong> <a href="tel:+19785550146">{{ site.phone }}</a></li>
+        <li><strong>Phone:</strong> <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a></li>
         <li><strong>LinkedIn:</strong> <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">View profile</a></li>
+        <li><strong>Setup:</strong> Dedicated home office and high-speed internet</li>
       </ul>
     </div>
 
     <form class="contact-form" action="https://formspree.io/f/mjgaeykk" method="POST" aria-label="Contact form">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden />
+      <input type="hidden" name="_subject" value="New portfolio inquiry from caitlinbritten.com" />
       <div class="field-group">
         <label for="name">Full name</label>
         <input id="name" name="name" type="text" autocomplete="name" required />
@@ -36,7 +39,11 @@ structuredData:
         <input id="company" name="company" type="text" autocomplete="organization" />
       </div>
       <div class="field-group">
-        <label for="message">Project details</label>
+        <label for="opportunity">Opportunity type</label>
+        <input id="opportunity" name="opportunity" type="text" placeholder="Remote admin, scheduling coordinator, customer support..." />
+      </div>
+      <div class="field-group">
+        <label for="message">Opportunity details</label>
         <textarea id="message" name="message" rows="6" required></textarea>
       </div>
       <p class="privacy-note">Privacy notice: {{ site.footerPrivacy }}</p>

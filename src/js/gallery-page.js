@@ -10,23 +10,55 @@ const CATEGORY_ORDER = [
   'Video Reels'
 ];
 
-const VIDEO_THUMBNAILS = {
-  'assets/videos/Beverly holiday.mp4': 'assets/videos/Beverly holiday.mp4_snapshot_00.00.266.jpg',
-  'assets/videos/Breathe Deeper2.mp4': 'assets/videos/Breathe Deeper2.mp4_snapshot_00.00.279.jpg',
-  'assets/videos/Gift Card Sale.mp4': 'assets/videos/Gift Card Sale.mp4_snapshot_00.00.429.jpg',
-  'assets/videos/Happy.mp4': 'assets/videos/Happy.mp4_snapshot_00.00.321.jpg',
-  'assets/videos/Middleton Holiday.mp4': 'assets/videos/Middleton Holiday.mp4_snapshot_00.00.369.jpg',
-  'assets/videos/Recharge.mp4': 'assets/videos/Recharge.mp4_snapshot_00.00.179.jpg',
-  'assets/videos/Well be here when you get back.mp4': 'assets/videos/Well be here when you get back.jpg'
-};
+const FOCUSABLE_SELECTOR = [
+  'a[href]',
+  'button:not([disabled])',
+  'input:not([disabled]):not([type="hidden"])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  '[tabindex]:not([tabindex="-1"])'
+].join(',');
 
 const toMediaType = (item) => item.type === 'video' ? 'video' : 'image';
 
 const toAssetUrl = (filename) => encodeURI(`/${filename}`);
 
+const toDomId = (value) => value
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-|-$/g, '');
+
 const toOptimizedBase = (filename) => {
   const cleanName = filename.replace(/^assets\//, '').replace(/\.[^.]+$/, '');
   return encodeURI(`/assets/optimized/${cleanName}`);
+};
+
+const createTextElement = (tagName, className, text) => {
+  const element = document.createElement(tagName);
+  if (className) {
+    element.className = className;
+  }
+  element.textContent = text;
+  return element;
+};
+
+const getFocusableElements = (root) => Array.from(root.querySelectorAll(FOCUSABLE_SELECTOR))
+  .filter((element) => element instanceof HTMLElement && !element.hidden);
+
+const setPageInert = (modal, isInert) => {
+  Array.from(document.body.children).forEach((child) => {
+    if (child === modal) {
+      return;
+    }
+
+    if (isInert) {
+      child.setAttribute('inert', '');
+      child.setAttribute('aria-hidden', 'true');
+    } else {
+      child.removeAttribute('inert');
+      child.removeAttribute('aria-hidden');
+    }
+  });
 };
 
 const buildCardMedia = (item) => {
@@ -36,7 +68,7 @@ const buildCardMedia = (item) => {
   if (toMediaType(item) === 'video') {
     const image = document.createElement('img');
     const candidates = [
-      VIDEO_THUMBNAILS[item.filename],
+      item.thumbnail,
       item.filename.replace('.mp4', '.jpg'),
       item.filename.replace('.mp4', '.png')
     ].filter(Boolean);
@@ -84,16 +116,48 @@ const createModal = () => {
   const modal = document.createElement('div');
   modal.className = 'modal';
   modal.setAttribute('aria-hidden', 'true');
-  modal.innerHTML = `
-    <button class="modal__close" type="button" aria-label="Close preview">&times;</button>
-    <article class="modal__content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <div id="modal-media-wrap"></div>
-      <div class="modal__body">
-        <h2 id="modal-title"></h2>
-        <p id="modal-description"></p>
-      </div>
-    </article>
-  `;
+
+  const closeButton = document.createElement('button');
+  closeButton.className = 'modal__close';
+  closeButton.type = 'button';
+  closeButton.setAttribute('aria-label', 'Close preview');
+  closeButton.textContent = 'x';
+
+  const content = document.createElement('article');
+  content.className = 'modal__content';
+  content.setAttribute('role', 'dialog');
+  content.setAttribute('aria-modal', 'true');
+  content.setAttribute('aria-labelledby', 'modal-title');
+  content.tabIndex = -1;
+
+  const mediaWrap = document.createElement('div');
+  mediaWrap.id = 'modal-media-wrap';
+
+  const body = document.createElement('div');
+  body.className = 'modal__body';
+
+  const title = document.createElement('h2');
+  title.id = 'modal-title';
+
+  const description = document.createElement('p');
+  description.id = 'modal-description';
+
+  const impact = document.createElement('p');
+  impact.id = 'modal-impact';
+  impact.className = 'modal__impact';
+
+  const tools = document.createElement('p');
+  tools.id = 'modal-tools';
+  tools.className = 'modal__tools';
+
+  body.appendChild(title);
+  body.appendChild(description);
+  body.appendChild(impact);
+  body.appendChild(tools);
+  content.appendChild(mediaWrap);
+  content.appendChild(body);
+  modal.appendChild(closeButton);
+  modal.appendChild(content);
   document.body.appendChild(modal);
   return modal;
 };
@@ -108,16 +172,27 @@ const renderGallery = () => {
 
   const modal = createModal();
   const closeModalButton = modal.querySelector('.modal__close');
+  const modalContent = modal.querySelector('.modal__content');
   const modalMediaWrap = modal.querySelector('#modal-media-wrap');
   const modalTitle = modal.querySelector('#modal-title');
   const modalDescription = modal.querySelector('#modal-description');
+  const modalImpact = modal.querySelector('#modal-impact');
+  const modalTools = modal.querySelector('#modal-tools');
 
   let activeFilter = 'All';
+  let lastFocusedElement = null;
 
   const closeModal = () => {
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-    modalMediaWrap.innerHTML = '';
+    setPageInert(modal, false);
+    if (modalMediaWrap instanceof HTMLElement) {
+      modalMediaWrap.replaceChildren();
+    }
+    if (lastFocusedElement instanceof HTMLElement) {
+      lastFocusedElement.focus();
+    }
+    lastFocusedElement = null;
   };
 
   if (closeModalButton instanceof HTMLButtonElement) {
@@ -131,13 +206,45 @@ const renderGallery = () => {
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+    if (!modal.classList.contains('is-open')) {
+      return;
+    }
+
+    if (event.key === 'Escape') {
       closeModal();
+      return;
+    }
+
+    if (event.key === 'Tab') {
+      const focusableElements = getFocusableElements(modal);
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        if (modalContent instanceof HTMLElement) {
+          modalContent.focus();
+        }
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
     }
   });
 
   const openModal = (item) => {
-    modalMediaWrap.innerHTML = '';
+    if (!(modalMediaWrap instanceof HTMLElement)) {
+      return;
+    }
+
+    lastFocusedElement = document.activeElement;
+    modalMediaWrap.replaceChildren();
 
     if (toMediaType(item) === 'video') {
       const video = document.createElement('video');
@@ -162,27 +269,45 @@ const renderGallery = () => {
     if (modalDescription instanceof HTMLElement) {
       modalDescription.textContent = item.description;
     }
+    if (modalImpact instanceof HTMLElement) {
+      modalImpact.textContent = item.businessImpact ? `Business impact: ${item.businessImpact}` : '';
+      modalImpact.hidden = !item.businessImpact;
+    }
+    if (modalTools instanceof HTMLElement) {
+      modalTools.textContent = item.toolsUsed?.length ? `Tools: ${item.toolsUsed.join(', ')}` : '';
+      modalTools.hidden = !item.toolsUsed?.length;
+    }
 
+    setPageInert(modal, true);
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
+    if (closeModalButton instanceof HTMLButtonElement) {
+      closeModalButton.focus();
+    } else if (modalContent instanceof HTMLElement) {
+      modalContent.focus();
+    }
   };
 
   const categories = Array.from(new Set(galleryData.map((item) => item.category)));
   const orderedCategories = CATEGORY_ORDER.filter((name) => name === 'All' || categories.includes(name));
 
   const renderFilters = () => {
-    filtersRoot.innerHTML = '';
+    filtersRoot.replaceChildren();
 
     orderedCategories.forEach((category) => {
+      const categoryId = toDomId(category);
       const li = document.createElement('li');
       li.setAttribute('role', 'presentation');
 
       const button = document.createElement('button');
       button.type = 'button';
+      button.id = `filter-${categoryId}`;
       button.setAttribute('role', 'tab');
+      button.setAttribute('aria-controls', 'portfolio-categories');
       button.dataset.filter = category;
       button.textContent = category;
       button.setAttribute('aria-selected', String(activeFilter === category));
+      button.tabIndex = activeFilter === category ? 0 : -1;
 
       button.addEventListener('click', () => {
         activeFilter = category;
@@ -196,7 +321,7 @@ const renderGallery = () => {
   };
 
   const renderSections = () => {
-    categoriesRoot.innerHTML = '';
+    categoriesRoot.replaceChildren();
 
     const displayCategories = activeFilter === 'All'
       ? orderedCategories.filter((name) => name !== 'All')
@@ -207,10 +332,10 @@ const renderGallery = () => {
 
       const section = document.createElement('section');
       section.className = 'portfolio-section';
-      section.setAttribute('aria-labelledby', `category-${category}`);
+      section.setAttribute('aria-labelledby', `category-${toDomId(category)}`);
 
       const heading = document.createElement('h2');
-      heading.id = `category-${category}`;
+      heading.id = `category-${toDomId(category)}`;
       heading.textContent = category;
 
       const list = document.createElement('ul');
@@ -227,10 +352,8 @@ const renderGallery = () => {
 
         const body = document.createElement('div');
         body.className = 'portfolio-card__body';
-        body.innerHTML = `
-          <p class="portfolio-card__title">${item.title}</p>
-          <p class="portfolio-card__category">${item.category}</p>
-        `;
+        body.appendChild(createTextElement('p', 'portfolio-card__title', item.title));
+        body.appendChild(createTextElement('p', 'portfolio-card__category', item.category));
         button.appendChild(body);
 
         button.addEventListener('click', () => openModal(item));

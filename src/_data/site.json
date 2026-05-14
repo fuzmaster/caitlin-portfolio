@@ -4,13 +4,15 @@
   "tagline": "Remote administrative and customer support specialist",
   "location": "Peabody, MA",
   "year": 2026,
-  "phone": "(978) 555-0146",
+  "phone": "(978) 979-6500",
+  "phoneHref": "+19789796500",
   "email": "cbrittenb@gmail.com",
   "linkedin": "https://www.linkedin.com/in/caitlin-britten/",
   "footerPrivacy": "Your information is only used to respond to your inquiry and is never sold.",
   "navigation": [
     { "label": "Home", "url": "/" },
     { "label": "Portfolio", "url": "/gallery/" },
+    { "label": "Resume", "url": "/resume/" },
     { "label": "About", "url": "/about/" },
     { "label": "Contact", "url": "/contact/" }
   ]

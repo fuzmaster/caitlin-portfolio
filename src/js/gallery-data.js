@@ -312,6 +312,7 @@ const galleryData = [
   {
     id: 'video-gift-card-sale',
     filename: 'assets/videos/Gift Card Sale.mp4',
+    thumbnail: 'assets/videos/Gift Card Sale.mp4_snapshot_00.00.429.jpg',
     title: 'Gift Card Sale Reel',
     type: 'video',
     category: 'Video Reels',
@@ -322,6 +323,7 @@ const galleryData = [
   {
     id: 'video-happy-spring',
     filename: 'assets/videos/Happy.mp4',
+    thumbnail: 'assets/videos/Happy.mp4_snapshot_00.00.321.jpg',
     title: 'Happy Spring Reel',
     type: 'video',
     category: 'Video Reels',
@@ -332,6 +334,7 @@ const galleryData = [
   {
     id: 'video-middleton-holiday',
     filename: 'assets/videos/Middleton Holiday.mp4',
+    thumbnail: 'assets/videos/Middleton Holiday.mp4_snapshot_00.00.369.jpg',
     title: 'Middleton Holiday Reel',
     type: 'video',
     category: 'Video Reels',
@@ -342,6 +345,7 @@ const galleryData = [
   {
     id: 'video-recharge',
     filename: 'assets/videos/Recharge.mp4',
+    thumbnail: 'assets/videos/Recharge.mp4_snapshot_00.00.179.jpg',
     title: 'Recharge Promo Reel',
     type: 'video',
     category: 'Video Reels',
@@ -361,6 +365,7 @@ const galleryData = [
      * folder to match this string exactly.
      */
     filename: 'assets/videos/Well be here when you get back.mp4',
+    thumbnail: 'assets/videos/Well be here when you get back.jpg',
     title: "We'll Be Here Reel",
     type: 'video',
     category: 'Video Reels',
@@ -371,6 +376,7 @@ const galleryData = [
   {
     id: 'video-beverly-holiday',
     filename: 'assets/videos/Beverly holiday.mp4',
+    thumbnail: 'assets/videos/Beverly holiday.mp4_snapshot_00.00.266.jpg',
     title: 'Beverly Holiday Reel',
     type: 'video',
     category: 'Video Reels',
@@ -381,6 +387,7 @@ const galleryData = [
   {
     id: 'video-breathe-deeper',
     filename: 'assets/videos/Breathe Deeper2.mp4',
+    thumbnail: 'assets/videos/Breathe Deeper2.mp4_snapshot_00.00.279.jpg',
     title: 'Breathe Deeper Reel',
     type: 'video',
     category: 'Video Reels',
@@ -391,6 +398,7 @@ const galleryData = [
   {
     id: 'video-mothers-day-gift-card',
     filename: 'assets/videos/Gift Card Sale.mp4',
+    thumbnail: 'assets/videos/Gift Card Sale.mp4_snapshot_00.00.429.jpg',
     title: "Mother's Day Gift Card Reel",
     type: 'video',
     category: 'Video Reels',

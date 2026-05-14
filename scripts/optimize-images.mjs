@@ -13,6 +13,20 @@ const files = await fg('assets/**/*.{png,jpg,jpeg}', {
 });
 
 const widths = [640, 1280];
+let optimizedCount = 0;
+let skippedCount = 0;
+
+const isFresh = async (srcPath, outFile) => {
+  try {
+    const [srcStat, outStat] = await Promise.all([
+      fs.promises.stat(srcPath),
+      fs.promises.stat(outFile)
+    ]);
+    return outStat.mtimeMs >= srcStat.mtimeMs;
+  } catch {
+    return false;
+  }
+};
 
 for (const relativeFile of files) {
   const srcPath = path.join(root, relativeFile);
@@ -22,16 +36,19 @@ for (const relativeFile of files) {
 
   await fs.promises.mkdir(targetDir, { recursive: true });
 
-  const image = sharp(srcPath);
-  const metadata = await image.metadata();
-
   for (const width of widths) {
     const outFile = path.join(targetDir, `${parsed.name}-${width}.webp`);
+    if (await isFresh(srcPath, outFile)) {
+      skippedCount += 1;
+      continue;
+    }
+
     await sharp(srcPath)
       .resize({ width, withoutEnlargement: true })
       .webp({ quality: 72 })
       .toFile(outFile);
+    optimizedCount += 1;
   }
 }
 
-console.log(`Optimized ${files.length} images into ${outRoot}`);
+console.log(`Optimized ${optimizedCount} images into ${outRoot}; skipped ${skippedCount} fresh outputs.`);
