@@ -144,7 +144,7 @@ const createModal = () => {
   closeButton.className = 'modal__close';
   closeButton.type = 'button';
   closeButton.setAttribute('aria-label', 'Close preview');
-  closeButton.textContent = 'x';
+  closeButton.textContent = '\u00d7';
 
   const content = document.createElement('article');
   content.className = 'modal__content';

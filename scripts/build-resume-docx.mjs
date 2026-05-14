@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import JSZip from 'jszip';
 import {
   AlignmentType,
   Document,
@@ -41,6 +42,12 @@ const bullet = (value) => new Paragraph({
 });
 
 const resume = JSON.parse(await readFile(resumePath, 'utf8'));
+const contactLine = [
+  resume.location,
+  resume.phone,
+  resume.email,
+  resume.remoteSetup
+].filter(Boolean).join(' | ');
 
 const document = new Document({
   styles: {
@@ -104,7 +111,7 @@ const document = new Document({
           children: [text(resume.name, { bold: true, size: 36 })],
           spacing: { after: 20 }
         }),
-        paragraph('Peabody, MA | (978) 979-6500 | cbrittenb@gmail.com | Remote-ready home office'),
+        paragraph(contactLine),
         paragraph(resume.headline, { after: 60 }),
         paragraph(resume.summary, { after: 100 }),
         sectionHeading('Hiring Snapshot'),
@@ -131,5 +138,23 @@ const document = new Document({
 });
 
 const buffer = await Packer.toBuffer(document);
+const existingBuffer = await readFile(outputPath).catch(() => null);
+
+if (existingBuffer) {
+  const [existingZip, nextZip] = await Promise.all([
+    JSZip.loadAsync(existingBuffer),
+    JSZip.loadAsync(buffer)
+  ]);
+  const [existingDocument, nextDocument] = await Promise.all([
+    existingZip.file('word/document.xml')?.async('string'),
+    nextZip.file('word/document.xml')?.async('string')
+  ]);
+
+  if (existingDocument && existingDocument === nextDocument) {
+    console.log(`Unchanged ${outputPath}`);
+    process.exit(0);
+  }
+}
+
 await writeFile(outputPath, buffer);
 console.log(`Wrote ${outputPath}`);

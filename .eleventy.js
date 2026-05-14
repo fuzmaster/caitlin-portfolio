@@ -25,6 +25,8 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  eleventyConfig.addFilter('jsonStringify', (value) => JSON.stringify(value, null, 2));
+
   return {
     dir: {
       input: 'src',

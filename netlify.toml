@@ -8,7 +8,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; form-action https://formspree.io; frame-ancestors 'none'; img-src 'self' data:; media-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; object-src 'none'; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; form-action https://formspree.io; frame-ancestors 'none'; img-src 'self' data:; media-src 'self'; script-src 'self' 'sha256-VeOwObDxVHNLxyTo62ZHXMBY0C8AHBOYMOQm3I4s0k4=' 'sha256-ouTlsR7yY/S8bFf7dp0hKH2ZPx9vcv9WuTudr/gHf4I=' 'sha256-1DCxno5EQDjsj8pbv9CoLf7A6qzEw4lUpp6hdI0UJVs=' 'sha256-ueAbc541bKAD1iULQ7onzWJDljvYewZk2B9tWQ1mbpc=' 'sha256-8vqXM++Ow8QmkSXjDcyJrjyK50dBnjcXsUig6uBgRMw='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; object-src 'none'; upgrade-insecure-requests"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Content-Type-Options = "nosniff"
