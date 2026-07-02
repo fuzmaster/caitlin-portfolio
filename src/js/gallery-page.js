@@ -7,6 +7,7 @@ const CATEGORY_ORDER = [
   'Booking & Availability',
   'Client Education',
   'Community & Social Proof',
+  'Art & Commissions',
   'Video Reels'
 ];
 
