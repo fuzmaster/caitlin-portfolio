@@ -307,6 +307,17 @@ const galleryData = [
     description: 'Welcome announcement for a new esthetician joining the team. Published as soon as the hire was confirmed, this post started building the new provider\'s client list before their first day on the schedule.'
   },
 
+  // ─── ART & COMMISSIONS ────────────────────────────────────────────────────
+
+  {
+    id: 'commission-dog-portrait-glass',
+    filename: 'assets/commission-dog-portrait-glass.jpg',
+    title: 'Reverse-Glass Dog Portrait Commission',
+    category: 'Art & Commissions',
+    toolsUsed: ['Acrylic paint', 'Reverse-glass painting', 'Framing'],
+    description: 'A custom pet portrait I painted in July 2026 for a former co-worker\'s dog. Working from a reference photo, I hand-paint the image in reverse onto the back of a glass picture frame — building it up in layers, foreground details first — then back it with cardboard so the finished piece reads cleanly through the glass. Signed "CB." A personal commission that carries the same eye for color, composition, and detail I bring to my design work.'
+  },
+
   // ─── VIDEO REELS ──────────────────────────────────────────────────────────
 
   {
