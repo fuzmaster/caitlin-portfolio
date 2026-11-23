@@ -74,6 +74,7 @@ h1, h2, h3 { font-family: Fraunces, Georgia, serif; }
 #results-form input[type="text"], #results-form textarea { display: block; width: 100%; border: 2px solid #17213c; border-radius: 0.4rem; background: #fff; color: #17213c; padding: 0.75rem; }
 #results-form textarea { resize: vertical; }
 .results-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.25rem; }
+.results-actions .quiet-button { flex-basis: 100%; text-align: left; }
 .form-note { margin: 1rem 0 0; font-size: 0.85rem; line-height: 1.5; color: #526080; }
 .form-status { margin: 1rem 0 0; padding: 0.85rem 1rem; border: 2px solid #17213c; border-radius: 0.5rem; background: #fff; font-weight: 700; line-height: 1.45; }
 .form-status--success { background: #d9f4bc; }

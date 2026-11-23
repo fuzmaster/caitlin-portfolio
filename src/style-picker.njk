@@ -29,7 +29,7 @@ description: Pick the website looks and bright colors you love for Caitlin's por
   <section class="picker-results" id="results" aria-labelledby="results-title" hidden>
     <p class="picker-eyebrow">Your taste, captured</p>
     <h2 id="results-title" tabindex="-1">Here's what you picked.</h2>
-    <p>Review your favorites, then send them through so we can shape your portfolio around them.</p>
+    <p>Review your favorites, then open a ready-to-send email with your picks.</p>
     <div class="results-columns"><div><h3>Website looks</h3><ul id="style-results"></ul></div><div><h3>Color palettes</h3><ul id="palette-results"></ul></div></div>
     <form id="results-form" method="POST" action="https://formspree.io/f/mjgaeykk">
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden />
@@ -44,9 +44,9 @@ description: Pick the website looks and bright colors you love for Caitlin's por
       <input id="picker-name" name="name" type="text" value="Caitlin" maxlength="100" required />
       <label for="picker-note">Anything else we should know? <span>(optional)</span></label>
       <textarea id="picker-note" name="note" rows="3" maxlength="1000" placeholder="I love bold pink, but not too much yellow..."></textarea>
-      <div class="results-actions"><button class="primary-button" type="submit" data-submit>Send my picks</button><button class="secondary-button" type="button" data-copy>Copy summary</button></div>
+      <div class="results-actions"><a class="primary-button" href="mailto:caitiegirl5@gmail.com" data-email>Email my picks</a><button class="secondary-button" type="button" data-copy>Copy summary</button><button class="quiet-button" type="submit" data-submit>Save a form backup</button></div>
       <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
-      <p class="form-note">We’ll confirm when the form accepts your picks. If it cannot send, your choices stay here and you can copy the summary.</p>
+      <p class="form-note">Email opens a message addressed to caitiegirl5@gmail.com. Tap Send in your mail app to finish. Your choices stay saved on this phone.</p>
     </form>
     <button class="quiet-button" type="button" data-restart>Start over</button>
   </section>

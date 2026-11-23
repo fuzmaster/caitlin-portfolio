@@ -149,14 +149,19 @@ if (root) {
     try { await navigator.clipboard.writeText(summary()); event.currentTarget.textContent = 'Copied!'; window.setTimeout(() => { event.currentTarget.textContent = 'Copy summary'; }, 1800); }
     catch { event.currentTarget.textContent = 'Copy unavailable'; }
   });
+  root.querySelector('[data-email]').addEventListener('click', event => {
+    const subject = encodeURIComponent('Caitlin website style picks');
+    const body = encodeURIComponent(summary());
+    event.currentTarget.href = `mailto:caitiegirl5@gmail.com?subject=${subject}&body=${body}`;
+  });
   resultsForm.addEventListener('submit', async event => {
     event.preventDefault();
     if (!resultsForm.reportValidity() || submitButton.disabled) return;
     submitButton.disabled = true;
-    submitButton.textContent = 'Sending…';
+    submitButton.textContent = 'Saving…';
     formStatus.hidden = false;
     formStatus.className = 'form-status';
-    formStatus.textContent = 'Sending your picks…';
+    formStatus.textContent = 'Saving a form backup…';
     try {
       const response = await fetch(resultsForm.action, {
         method: 'POST',
@@ -165,13 +170,13 @@ if (root) {
       });
       if (!response.ok) throw new Error(`Submission failed (${response.status})`);
       formStatus.classList.add('form-status--success');
-      formStatus.textContent = 'Your picks were accepted. Thank you! You can copy the summary as a backup.';
-      submitButton.textContent = 'Picks sent';
+      formStatus.textContent = 'Form backup accepted. To email your picks, use Email my picks and tap Send in your mail app.';
+      submitButton.textContent = 'Backup saved';
     } catch {
       formStatus.classList.add('form-status--error');
-      formStatus.textContent = 'We could not send your picks. They are saved on this phone. Please try again, or tap Copy summary and send it in a message.';
+      formStatus.textContent = 'The form backup could not be saved. Your picks are still on this phone. Use Email my picks or Copy summary.';
       submitButton.disabled = false;
-      submitButton.textContent = 'Try sending again';
+      submitButton.textContent = 'Try backup again';
     }
   });
   document.addEventListener('keydown', event => {
