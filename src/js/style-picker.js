@@ -16,18 +16,21 @@ if (root) {
     { id: 'sunset-punch', kind: 'palette', title: 'Sunset punch', description: 'Orange, fuchsia, butter yellow, and plum.', colors: ['#ff8a36', '#e64191', '#ffdc7d', '#4b294b'] }
   ];
 
-  const storageKey = 'caitlin-style-picker-v1';
+  const storageKey = 'caitlin-style-picker-v2';
   const intro = root.querySelector('#intro');
   const game = root.querySelector('#game');
   const results = root.querySelector('#results');
   const cardStage = root.querySelector('#card-stage');
   const ratings = readRatings();
+  const resultsForm = root.querySelector('#results-form');
+  const submitButton = root.querySelector('[data-submit]');
+  const formStatus = root.querySelector('#form-status');
   let busy = false;
   let pointerStart = null;
 
   function readRatings() {
     try {
-      const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+      const saved = JSON.parse(localStorage.getItem(storageKey) || localStorage.getItem('caitlin-style-picker-v1') || '{}');
       return Object.fromEntries(Object.entries(saved).filter(([id, value]) => choices.some(choice => choice.id === id) && [0, 1, 2].includes(value)));
     } catch {
       return {};
@@ -43,9 +46,30 @@ if (root) {
   function preview(choice) {
     const colorVars = choice.colors.map((color, index) => `--pick-${index + 1}:${color}`).join(';');
     if (choice.kind === 'palette') {
-      return `<div class="palette-preview" style="${colorVars}"><div class="palette-preview__hero"><span>Caitlin Britten</span><strong>Good work feels better in color.</strong><i></i></div><div class="palette-preview__swatches">${choice.colors.map(color => `<span style="background:${color}"></span>`).join('')}</div></div>`;
+      const labels = {
+        'citrus-pop': ['Sunshine', 'Tomato', 'Cobalt', 'Cream'],
+        'berry-bloom': ['Pink', 'Raspberry', 'Lilac', 'Cream'],
+        'ocean-candy': ['Blue', 'Aqua', 'Coral', 'White'],
+        'peachy-keen': ['Apricot', 'Peach', 'Leaf', 'Ink'],
+        'lime-and-lilac': ['Lime', 'Violet', 'Lavender', 'Navy'],
+        'sunset-punch': ['Orange', 'Fuchsia', 'Butter', 'Plum']
+      }[choice.id];
+      return `<div class="palette-preview" style="${colorVars}"><div class="palette-preview__label">${choice.title}<span>COLOR PALETTE</span></div><div class="palette-preview__swatches">${choice.colors.map((color, index) => `<div class="palette-preview__swatch ${isDark(color) ? 'is-dark' : ''}" style="background:${color}"><strong>${labels[index]}</strong><span>${color.toUpperCase()}</span></div>`).join('')}</div></div>`;
     }
-    return `<div class="site-preview ${choice.className}" style="${colorVars}"><div class="site-preview__nav"><strong>Caitlin Britten</strong><span>Work &nbsp; About &nbsp; Contact</span></div><div class="site-preview__hero"><div class="site-preview__words"><small>REMOTE SUPPORT · CREATIVE CARE</small><strong>Here to make the busy days feel easy.</strong><span class="site-preview__cta">Let's talk</span></div><div class="site-preview__art"><i></i><b></b><em></em></div></div><div class="site-preview__bottom"><span>01 &nbsp; Client care</span><span>02 &nbsp; Organization</span><span>03 &nbsp; Creative support</span></div></div>`;
+    const layouts = {
+      'editorial-pop': `<div class="mini-editorial"><div class="mini-editorial__top">Caitlin Britten <span>ABOUT &nbsp; WORK &nbsp; CONTACT</span></div><div class="mini-editorial__body"><div><small>REMOTE ADMIN & CLIENT CARE</small><strong>The calm behind the busy.</strong><span>Personal support for people-first teams</span></div><aside><i></i><b>Thoughtful<br>work.</b></aside></div><div class="mini-editorial__foot">SELECTED WORK <span>↗</span></div></div>`,
+      'color-block-party': `<div class="mini-blocks"><div class="mini-blocks__top">CAITLIN BRITTEN <span>● ● ●</span></div><div class="mini-blocks__grid"><div class="mini-blocks__lead"><small>HELLO, I'M CAITLIN</small><strong>Ready when the day gets busy.</strong></div><div class="mini-blocks__tile">50+<span>calls a day</span></div><div class="mini-blocks__tile mini-blocks__tile--wide">Schedule care <span>Client support + admin</span></div></div></div>`,
+      'soft-and-playful': `<div class="mini-soft"><div class="mini-soft__top">Caitlin Britten <span>☰</span></div><div class="mini-soft__blob"><i></i><b></b></div><div class="mini-soft__content"><small>A LITTLE HELP GOES A LONG WAY</small><strong>Making room for the good stuff.</strong><span>Get to know me</span></div><div class="mini-soft__dots">● &nbsp; ○ &nbsp; ○</div></div>`,
+      'bright-and-crisp': `<div class="mini-crisp"><div class="mini-crisp__rail"><strong>CB</strong><span>01 / 03</span></div><div class="mini-crisp__main"><div class="mini-crisp__top">CAITLIN BRITTEN <span>MENU</span></div><small>REMOTE SUPPORT / MASSACHUSETTS</small><strong>Details handled.<br>People cared for.</strong><div class="mini-crisp__rule"></div><div class="mini-crisp__bottom"><span>Scheduling</span><span>Client care</span><span>Creative support</span></div></div></div>`,
+      'creative-collage': `<div class="mini-collage"><div class="mini-collage__brand">Caitlin Britten</div><div class="mini-collage__paper"><small>BEHIND THE SCENES</small><strong>Good things happen when the details click.</strong></div><div class="mini-collage__circle">hello!</div><div class="mini-collage__note">organized<br>with heart</div><div class="mini-collage__footer">EXPLORE THE WORK &nbsp; ✳</div></div>`,
+      'night-pop': `<div class="mini-night"><div class="mini-night__top">CAITLIN BRITTEN <span>WORK / ABOUT</span></div><div class="mini-night__stripe">REMOTE SUPPORT &nbsp; ✳ &nbsp; CLIENT CARE &nbsp; ✳</div><div class="mini-night__main"><small>WHEN EVERYTHING IS MOVING</small><strong>Count on me<br>to keep up.</strong><span>Let's work together</span><i></i></div></div>`
+    };
+    return `<div class="site-preview ${choice.className}" style="${colorVars}">${layouts[choice.id]}</div>`;
+  }
+
+  function isDark(hex) {
+    const rgb = [1, 3, 5].map(index => parseInt(hex.slice(index, index + 2), 16));
+    return (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000 < 145;
   }
 
   function render() {
@@ -124,6 +148,31 @@ if (root) {
   root.querySelector('[data-copy]').addEventListener('click', async event => {
     try { await navigator.clipboard.writeText(summary()); event.currentTarget.textContent = 'Copied!'; window.setTimeout(() => { event.currentTarget.textContent = 'Copy summary'; }, 1800); }
     catch { event.currentTarget.textContent = 'Copy unavailable'; }
+  });
+  resultsForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (!resultsForm.reportValidity() || submitButton.disabled) return;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending…';
+    formStatus.hidden = false;
+    formStatus.className = 'form-status';
+    formStatus.textContent = 'Sending your picks…';
+    try {
+      const response = await fetch(resultsForm.action, {
+        method: 'POST',
+        body: new FormData(resultsForm),
+        headers: { Accept: 'application/json' }
+      });
+      if (!response.ok) throw new Error(`Submission failed (${response.status})`);
+      formStatus.classList.add('form-status--success');
+      formStatus.textContent = 'Your picks were accepted. Thank you! You can copy the summary as a backup.';
+      submitButton.textContent = 'Picks sent';
+    } catch {
+      formStatus.classList.add('form-status--error');
+      formStatus.textContent = 'We could not send your picks. They are saved on this phone. Please try again, or tap Copy summary and send it in a message.';
+      submitButton.disabled = false;
+      submitButton.textContent = 'Try sending again';
+    }
   });
   document.addEventListener('keydown', event => {
     if (game.hidden || ['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;

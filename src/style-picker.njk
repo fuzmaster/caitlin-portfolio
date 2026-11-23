@@ -44,8 +44,9 @@ description: Pick the website looks and bright colors you love for Caitlin's por
       <input id="picker-name" name="name" type="text" value="Caitlin" maxlength="100" required />
       <label for="picker-note">Anything else we should know? <span>(optional)</span></label>
       <textarea id="picker-note" name="note" rows="3" maxlength="1000" placeholder="I love bold pink, but not too much yellow..."></textarea>
-      <div class="results-actions"><button class="primary-button" type="submit">Send my picks</button><button class="secondary-button" type="button" data-copy>Copy summary</button></div>
-      <p class="form-note">Your picks go to the same inbox as this site's contact form. You can also copy the summary for yourself.</p>
+      <div class="results-actions"><button class="primary-button" type="submit" data-submit>Send my picks</button><button class="secondary-button" type="button" data-copy>Copy summary</button></div>
+      <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+      <p class="form-note">We’ll confirm when the form accepts your picks. If it cannot send, your choices stay here and you can copy the summary.</p>
     </form>
     <button class="quiet-button" type="button" data-restart>Start over</button>
   </section>
