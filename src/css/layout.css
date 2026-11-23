@@ -10,10 +10,7 @@ body {
   font-size: var(--step-0);
   line-height: var(--line-body);
   color: var(--color-text);
-  background:
-    radial-gradient(circle at 85% 6%, rgba(232, 115, 90, 0.12), transparent 38%),
-    radial-gradient(circle at 8% 10%, rgba(232, 115, 90, 0.07), transparent 32%),
-    var(--color-bg);
+  background: var(--color-bg);
 }
 
 img {
@@ -45,14 +42,13 @@ main { min-height: 65vh; }
   margin: 0 auto;
 }
 
-.section { padding: var(--space-6) 0; }
+.section { padding: clamp(4rem, 7vw, 6.5rem) 0; }
 
 .kicker {
   display: inline-block;
   margin-bottom: var(--space-2);
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
   color: var(--color-accent);
   font-weight: 700;
 }
@@ -61,6 +57,36 @@ main { min-height: 65vh; }
   font-size: var(--step-1);
   max-width: 64ch;
 }
+
+.section-index {
+  color: var(--color-accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.section-heading h2 { max-width: 21ch; margin-bottom: 0; }
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-accent-strong);
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  white-space: nowrap;
+}
+
+.text-link:hover { color: var(--color-text); }
 
 .card-grid {
   list-style: none;
@@ -85,12 +111,11 @@ main { min-height: 65vh; }
 }
 
 .skill-list li {
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
   color: var(--color-text);
-  padding: 0.45rem 0.8rem;
-  font-weight: 700;
+  padding: 0.45rem 0;
+  font-weight: 600;
+  margin-right: var(--space-4);
 }
 
 .plain-list li + li {
@@ -123,7 +148,9 @@ main { min-height: 65vh; }
 }
 
 @media (max-width: 640px) {
-  .section { padding: var(--space-5) 0; }
-  .l-shell { width: calc(100% - 1.2rem); }
+  .section { padding: 3.5rem 0; }
+  .l-shell { width: calc(100% - 2rem); }
   .card-grid { grid-template-columns: 1fr; }
+  .section-heading { display: block; }
+  .section-heading .text-link { margin-top: var(--space-4); }
 }

@@ -13,7 +13,8 @@
   "footerPrivacy": "Your information is only used to respond to your inquiry and is never sold.",
   "navigation": [
     { "label": "Home", "url": "/" },
-    { "label": "Portfolio", "url": "/gallery/" },
+    { "label": "Services", "url": "/services/" },
+    { "label": "Work Samples", "url": "/gallery/" },
     { "label": "Resume", "url": "/resume/" },
     { "label": "About", "url": "/about/" },
     { "label": "Contact", "url": "/contact/" }
