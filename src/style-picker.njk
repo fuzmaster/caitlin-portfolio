@@ -1,0 +1,54 @@
+---
+layout: layouts/picker.njk
+title: Choose your website style | Caitlin's style studio
+description: Pick the website looks and bright colors you love for Caitlin's portfolio.
+---
+<div class="picker-shell" data-style-picker>
+  <section class="picker-intro" id="intro" aria-labelledby="intro-title">
+    <p class="picker-eyebrow">Made for Caitlin</p>
+    <h1 id="intro-title">Let's find a look that feels like <em>you.</em></h1>
+    <p>Swipe through a few website styles and bright color palettes. Pass on what feels wrong, like what feels good, and love your favorites. It takes about two minutes.</p>
+    <div class="intro-sample" aria-hidden="true"><span>bold</span><span>bright</span><span>all yours</span></div>
+    <button class="primary-button" type="button" data-start>Start choosing</button>
+  </section>
+
+  <section class="picker-game" id="game" aria-labelledby="game-title" hidden>
+    <div class="game-topline"><span id="stage-label">Website styles</span><span id="progress-label">1 of 12</span></div>
+    <div class="progress-track" aria-hidden="true"><span id="progress-fill"></span></div>
+    <h2 id="game-title">Which website look feels right?</h2>
+    <p class="game-instruction" id="game-instruction">Imagine your own photos and work in each layout. Choose the overall feel.</p>
+    <div class="card-stage" id="card-stage" aria-live="polite"></div>
+    <div class="choice-controls" aria-label="Rate this option">
+      <button class="choice-button choice-button--pass" type="button" data-rate="0"><span aria-hidden="true">×</span>Pass</button>
+      <button class="choice-button choice-button--like" type="button" data-rate="1"><span aria-hidden="true">♥</span>Like</button>
+      <button class="choice-button choice-button--love" type="button" data-rate="2"><span aria-hidden="true">★</span>Love</button>
+    </div>
+    <div class="game-footer"><button class="quiet-button" type="button" data-undo>Undo last pick</button><span>Swipe left to pass or right to like</span></div>
+  </section>
+
+  <section class="picker-results" id="results" aria-labelledby="results-title" hidden>
+    <p class="picker-eyebrow">Your taste, captured</p>
+    <h2 id="results-title" tabindex="-1">Here's what you picked.</h2>
+    <p>Review your favorites, then open a ready-to-send email with your picks.</p>
+    <div class="results-columns"><div><h3>Website looks</h3><ul id="style-results"></ul></div><div><h3>Color palettes</h3><ul id="palette-results"></ul></div></div>
+    <form id="results-form" method="POST" action="https://formspree.io/f/mjgaeykk">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden />
+      <input type="hidden" name="subject" value="Caitlin website style picks" />
+      <input type="hidden" name="source" value="caitlinbritten.com/style-picker" />
+      <input type="hidden" name="style_loves" id="style-loves" />
+      <input type="hidden" name="style_likes" id="style-likes" />
+      <input type="hidden" name="palette_loves" id="palette-loves" />
+      <input type="hidden" name="palette_likes" id="palette-likes" />
+      <input type="hidden" name="all_ratings" id="all-ratings" />
+      <label for="picker-name">Your name</label>
+      <input id="picker-name" name="name" type="text" value="Caitlin" maxlength="100" required />
+      <label for="picker-note">Anything else we should know? <span>(optional)</span></label>
+      <textarea id="picker-note" name="note" rows="3" maxlength="1000" placeholder="I love bold pink, but not too much yellow..."></textarea>
+      <div class="results-actions"><a class="primary-button" href="mailto:caitiegirl5@gmail.com" data-email>Email my picks</a><button class="secondary-button" type="button" data-copy>Copy summary</button><button class="quiet-button" type="submit" data-submit>Save a form backup</button></div>
+      <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+      <p class="form-note">Email opens a message addressed to caitiegirl5@gmail.com. Tap Send in your mail app to finish. Your choices stay saved on this phone.</p>
+    </form>
+    <button class="quiet-button" type="button" data-restart>Start over</button>
+  </section>
+  <noscript><p class="noscript-note">Please enable JavaScript to use the style picker.</p></noscript>
+</div>
