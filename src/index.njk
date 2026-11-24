@@ -22,58 +22,62 @@ structuredData:
 ---
 <section class="hero">
   <div class="l-shell hero__inner">
-    <p class="kicker">Remote Admin + Customer Support</p>
-    <h1>Reliable remote support for busy service-based teams</h1>
-    <p class="hero__subhead">Caitlin Britten brings 3+ years of high-volume front desk experience across scheduling, client communication, payment processing, sensitive records, and campaign-ready content support.</p>
-    <div class="hero__actions">
-      <a class="btn btn--primary" href="/contact/">Contact Caitlin</a>
-      <a class="btn btn--ghost" href="/resume/">View resume</a>
+    <div class="hero__copy">
+      <p class="hero__intro">Caitlin Britten <span aria-hidden="true">/</span> Remote administrative support</p>
+      <h1>Scheduling, client care, and the details in between</h1>
+      <p class="hero__subhead">I’m Caitlin. I’ve supported 8+ providers in Mindbody, handled 50+ client calls on busy days, and kept the follow-up moving when plans changed.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="/contact/">Contact Caitlin</a>
+        <a class="btn btn--ghost" href="/resume/">View resume <span aria-hidden="true">↗</span></a>
+      </div>
     </div>
+    <aside class="hero__proof" aria-label="Caitlin's front desk experience">
+      <p class="hero__proof-label">From the front desk</p>
+      <div class="hero__proof-main"><strong>50<span>+</span></strong><p>client calls handled on busy days</p></div>
+      <div class="hero__proof-detail"><strong>8+ providers</strong><span>scheduled and supported in Mindbody</span></div>
+      <p class="hero__proof-foot">Appointments, waitlists, payments, and the messages that keep clients informed.</p>
+      <a href="/case-studies/">See how I work <span aria-hidden="true">↗</span></a>
+    </aside>
+  </div>
+</section>
+
+<section class="section home-work" aria-labelledby="featured-heading">
+  <div class="l-shell">
+    <div class="section-heading">
+      <div><p class="section-index">01 / Selected work</p><h2 id="featured-heading">A few things I have helped put into motion</h2></div>
+      <a class="text-link" href="/gallery/">Explore all work samples <span aria-hidden="true">↗</span></a>
+    </div>
+    <article class="home-work__feature">
+      <div class="home-work__feature-image"><img src="/assets/booking-availability-promo.png" alt="Caitlin's appointment availability graphic for Elements Massage" loading="lazy" width="1200" height="1200" srcset="/assets/optimized/booking-availability-promo-640.webp 640w, /assets/optimized/booking-availability-promo-1280.webp 1280w" sizes="(max-width: 700px) 100vw, 42vw" /></div>
+      <div class="home-work__feature-copy">
+        <p class="home-work__feature-type">Client communication · Scheduling</p>
+        <h3>Making an open appointment easy to spot</h3>
+        <p>This availability graphic is one example of the client updates I created while supporting changing schedules and waitlists at a busy massage studio.</p>
+        <a class="text-link" href="/gallery/">Browse the work samples <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
   </div>
 </section>
 
 <section class="section services" aria-labelledby="services-heading">
   <div class="l-shell">
-    <p class="kicker">Hire For</p>
-    <h2 id="services-heading">Administrative support that protects the client experience</h2>
-    <ul class="card-grid" role="list">
+    <div class="section-heading"><div><p class="section-index">02 / What I can own</p><h2 id="services-heading">Support that keeps the day running smoothly</h2></div></div>
+    <ol class="service-list">
       {% for service in services %}
-      <li class="card">
-        <h3>{{ service.title }}</h3>
-        <p>{{ service.description }}</p>
-      </li>
+      <li><span class="service-list__number">0{{ loop.index }}</span><div><h3>{{ service.title }}</h3><p>{{ service.description }}</p></div></li>
       {% endfor %}
-    </ul>
+    </ol>
   </div>
 </section>
 
-<section class="section" aria-labelledby="featured-heading">
+<section class="section" aria-labelledby="hiring-resources-heading">
   <div class="l-shell">
-    <p class="kicker">Proof of Work</p>
-    <h2 id="featured-heading">Examples of practical support in action</h2>
-    <div class="featured-carousel" data-carousel>
-      <button class="featured-carousel__control" type="button" data-prev aria-label="Previous featured sample">&#8592;</button>
-      <button class="featured-carousel__control" type="button" data-next aria-label="Next featured sample">&#8594;</button>
-
-      <figure class="featured-carousel__slide is-active" data-slide>
-        <img src="/assets/promo-member-savings-event.png" alt="Promotional graphic announcing a member-only savings event to increase off-peak bookings" loading="eager" width="1200" height="900" srcset="/assets/optimized/promo-member-savings-event-640.webp 640w, /assets/optimized/promo-member-savings-event-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 80vw" />
-      </figure>
-      <figure class="featured-carousel__slide" data-slide>
-        <img src="/assets/booking-availability-promo.png" alt="Booking update post helping clients self-serve appointment availability without calling the front desk" loading="lazy" width="1200" height="900" srcset="/assets/optimized/booking-availability-promo-640.webp 640w, /assets/optimized/booking-availability-promo-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 80vw" />
-      </figure>
-      <figure class="featured-carousel__slide" data-slide>
-        <img src="/assets/client-testimonials-social-proof.png" alt="Social proof graphic featuring client testimonials used to build trust with new prospects" loading="lazy" width="1200" height="900" srcset="/assets/optimized/client-testimonials-social-proof-640.webp 640w, /assets/optimized/client-testimonials-social-proof-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 80vw" />
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section class="section metrics" aria-label="Performance highlights">
-  <div class="l-shell">
-    <ul class="metric-list" role="list">
-      <li><strong>50+ calls/day</strong><span>triaged across client questions, payments, scheduling, and complaints</span></li>
-      <li><strong>8+ providers</strong><span>coordinated in Mindbody with proactive schedule balancing</span></li>
-      <li><strong>Remote-ready</strong><span>dedicated home office, high-speed internet, and service-team experience</span></li>
+    <p class="kicker">Hiring Resources</p>
+    <h2 id="hiring-resources-heading">Details for recruiters and hiring managers</h2>
+    <ul class="resource-list" role="list">
+      <li><h3>Services</h3><p>See the admin, scheduling, support, and campaign tasks Caitlin can own remotely.</p><a class="text-link" href="/services/">View services <span aria-hidden="true">↗</span></a></li>
+      <li><h3>Case studies</h3><p>Review examples of schedule support, client communication, and campaign execution.</p><a class="text-link" href="/case-studies/">View case studies <span aria-hidden="true">↗</span></a></li>
+      <li><h3>FAQ</h3><p>Get quick answers about tools, remote setup, sensitive records, and high-volume support.</p><a class="text-link" href="/faq/">Read FAQ <span aria-hidden="true">↗</span></a></li>
     </ul>
   </div>
 </section>
@@ -95,4 +99,9 @@ structuredData:
   </div>
 </section>
 
-{% include "partials/testimonials.njk" %}
+<section class="section home-references" aria-labelledby="home-references-heading">
+  <div class="l-shell home-references__inner">
+    <div><p class="kicker">References</p><h2 id="home-references-heading">Ask the people I’ve worked with</h2></div>
+    <div><p>Professional references are available upon request. I can share contacts who can speak to my scheduling, client communication, and daily follow-through.</p><a class="text-link" href="/references/">About my references <span aria-hidden="true">↗</span></a></div>
+  </div>
+</section>

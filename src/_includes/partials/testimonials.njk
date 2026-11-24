@@ -1,15 +1,6 @@
 <section class="section testimonials" aria-labelledby="testimonials-heading">
-  <div class="l-shell">
-    <p class="kicker">References</p>
-    <h2 id="testimonials-heading">Professional references available</h2>
-    <ul class="testimonials__list">
-      {% for item in testimonials %}
-      <li class="testimonial-card">
-        <p>{{ item.quote }}</p>
-        <p class="testimonial-card__meta">{{ item.name }} - {{ item.company }}</p>
-      </li>
-      {% endfor %}
-    </ul>
-    <p class="references-note">References available upon request.</p>
+  <div class="l-shell reference-request">
+    <div><p class="kicker">References</p><h2 id="testimonials-heading">Hear from people I’ve worked with</h2></div>
+    <div><p>Professional references are available for hiring teams. Ask about my work with scheduling, client communication, and front desk operations.</p><a class="text-link" href="/references/">How to request references <span aria-hidden="true">↗</span></a></div>
   </div>
 </section>
