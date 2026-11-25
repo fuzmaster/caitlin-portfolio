@@ -20,9 +20,9 @@
 .hero__intro span { padding: 0 0.4rem; color: var(--color-muted); }
 
 .hero h1 {
-  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   line-height: 1.04;
-  max-width: 12ch;
+  max-width: 18ch;
   margin-bottom: var(--space-4);
 }
 
@@ -42,22 +42,19 @@
 .hero__actions .btn span { margin-left: 0.3rem; }
 
 .hero__proof {
-  background: var(--color-surface);
-  border-top: 8px solid var(--color-decorative);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  box-shadow: 10px 10px 0 var(--color-warm);
+  border-left: 2px solid var(--color-accent);
+  padding: 0 0 0 clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.hero__proof-label { color: var(--color-accent); font-weight: 700; margin-bottom: var(--space-4); }
+.hero__proof-label { color: var(--color-accent); font-weight: 700; margin-bottom: var(--space-3); }
 .hero__proof-main { display: flex; align-items: baseline; gap: var(--space-3); border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-4); }
-.hero__proof-main strong { font-family: var(--font-heading); font-size: clamp(4.5rem, 8vw, 7rem); line-height: 1; color: var(--color-accent); }
+.hero__proof-main strong { font-family: var(--font-heading); font-size: clamp(4.5rem, 7vw, 6rem); line-height: 1; color: var(--color-accent); }
 .hero__proof-main strong span { color: var(--color-decorative); }
 .hero__proof-main p { max-width: 12ch; margin: 0; line-height: 1.35; }
 .hero__proof-detail { display: flex; flex-direction: column; gap: 0.25rem; padding: var(--space-4) 0; border-bottom: 1px solid var(--color-border); }
 .hero__proof-detail strong { font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-text); }
 .hero__proof-detail span { color: var(--color-muted); }
-.hero__proof-foot { margin: var(--space-4) 0; }
-.hero__proof a { color: var(--color-accent); font-weight: 700; text-underline-offset: 0.25rem; }
+.hero__proof a { display: inline-block; margin-top: var(--space-4); color: var(--color-accent); font-weight: 700; text-underline-offset: 0.25rem; }
 
 .home-work { background: var(--color-surface); }
 
@@ -364,7 +361,7 @@
   .portfolio-section__list { grid-template-columns: 1fr; }
   .hero__inner { grid-template-columns: 1fr; gap: var(--space-5); }
   .hero h1 { max-width: 14ch; }
-  .hero__proof { box-shadow: 6px 6px 0 var(--color-warm); }
+  .hero__proof { padding-left: var(--space-4); }
   .home-work__feature, .home-references__inner, .reference-request { grid-template-columns: 1fr; }
   .home-work__feature-image { max-width: none; }
   .resource-list li { grid-template-columns: 1fr; gap: var(--space-2); }
